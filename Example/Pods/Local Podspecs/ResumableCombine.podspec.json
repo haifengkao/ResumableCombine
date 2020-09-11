@@ -15,8 +15,10 @@
     "git": "https://github.com/HaiFengKao/ResumableCombine.git",
     "tag": "0.4.0"
   },
+  "swift_versions": "5.1",
   "platforms": {
     "ios": "13.0"
   },
-  "source_files": "ResumableCombine/Classes/**/*"
+  "source_files": "ResumableCombine/Classes/**/*",
+  "swift_version": "5.1"
 }

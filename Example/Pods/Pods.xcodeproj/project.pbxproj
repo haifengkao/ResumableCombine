@@ -1098,6 +1098,73 @@
 			};
 			name = Release;
 		};
+		20FB0D13F9447E3D4120C6C186C85217 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 878A1FD0057834B64EE20F977DE18EBF /* ResumableCombine.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ResumableCombine/ResumableCombine-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ResumableCombine/ResumableCombine-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ResumableCombine/ResumableCombine.modulemap";
+				PRODUCT_MODULE_NAME = ResumableCombine;
+				PRODUCT_NAME = ResumableCombine;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		42BE635C6F1DFA78636C528EBA47C6B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AC09BDDE7BBD7361EFB949D7298D439 /* ResumableCombine.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ResumableCombine/ResumableCombine-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ResumableCombine/ResumableCombine-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ResumableCombine/ResumableCombine.modulemap";
+				PRODUCT_MODULE_NAME = ResumableCombine;
+				PRODUCT_NAME = ResumableCombine;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		495682BD673751919978341C224A2235 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E88F1C465D486AE96DE5D5C1460399BB /* Pods-ResumableCombine_Tests.release.xcconfig */;
@@ -1201,39 +1268,6 @@
 			};
 			name = Debug;
 		};
-		70DBE3815CA0970B71169206868B9541 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 878A1FD0057834B64EE20F977DE18EBF /* ResumableCombine.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ResumableCombine/ResumableCombine-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ResumableCombine/ResumableCombine-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ResumableCombine/ResumableCombine.modulemap";
-				PRODUCT_MODULE_NAME = ResumableCombine;
-				PRODUCT_NAME = ResumableCombine;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		87B0528058C0DA92B684FBC34E66E88D /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2D9BFC41B761DDAB5C1BE811146D806A /* Quick.release.xcconfig */;
@@ -1331,40 +1365,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		9A5AAD285C3E95396B9F88F1F227367D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0AC09BDDE7BBD7361EFB949D7298D439 /* ResumableCombine.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ResumableCombine/ResumableCombine-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ResumableCombine/ResumableCombine-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ResumableCombine/ResumableCombine.modulemap";
-				PRODUCT_MODULE_NAME = ResumableCombine;
-				PRODUCT_NAME = ResumableCombine;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		D3A6C80F3FAB2BF6A9626EFEDBA7041A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1512,8 +1512,8 @@
 		27E75CF52A251CED36F25D14C21AF70A /* Build configuration list for PBXNativeTarget "ResumableCombine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				70DBE3815CA0970B71169206868B9541 /* Debug */,
-				9A5AAD285C3E95396B9F88F1F227367D /* Release */,
+				20FB0D13F9447E3D4120C6C186C85217 /* Debug */,
+				42BE635C6F1DFA78636C528EBA47C6B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
