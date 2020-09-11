@@ -19,6 +19,8 @@ let subscription = [1,2,3,4,5].publisher
         },
         receiveValue: { value -> Bool in
              print("Receive value: \(value)")
+             
+             // return true indicates that we want to request for another demand
              return true
         }
     )
@@ -44,6 +46,8 @@ let subscription = (1 ... Int.max).publisher
         },
         receiveValue: { value -> Bool in
              print("Receive value: \(value)")
+             
+             // return false will stop the demands 
              return false
         }
     )
