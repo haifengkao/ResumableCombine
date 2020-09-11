@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/ResumableCombine.svg?style=flat)](https://cocoapods.org/pods/ResumableCombine)
 
 
-Swift Combine lacks of support for proper backpressure handling. Many of its operators just send `request(.unlimited)` for the first demand request. It renders the pull mechanism utterly uselesss. This project aims to fix this problem.
+Swift Combine lacks of support for proper backpressure handling. Many of its operators just send `request(.unlimited)` for the first demand request. It renders the Combine's pull mechanism utterly uselesss. This project aims to fix this problem.
 
 ## Example
 
