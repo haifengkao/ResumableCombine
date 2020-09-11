@@ -16,11 +16,13 @@ internal enum SubscriptionStatus {
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension Subscribers {
-    public final class LimitiedAssign<Root, Input>: Subscriber,
+    public final class ResumableAssign<Root, Input>: Subscriber,
         Cancellable,
+        ResumableProtocol,
         CustomStringConvertible,
         CustomReflectable,
         CustomPlaygroundDisplayConvertible {
+        
         // NOTE: this class has been audited for thread safety.
         // Combine doesn't use any locking here.
 
@@ -31,8 +33,10 @@ extension Subscribers {
         public let keyPath: ReferenceWritableKeyPath<Root, Input>
 
         private var status = SubscriptionStatus.awaitingSubscription
-
-        public var description: String { return "LimitedAssign \(Root.self)." }
+        
+        private let mode: ResumableAssignMode
+        
+        public var description: String { return "ResumableAssign \(Root.self)." }
 
         public var customMirror: Mirror {
             let children: [Mirror.Child] = [
@@ -45,9 +49,10 @@ extension Subscribers {
 
         public var playgroundDescription: Any { return description }
 
-        public init(object: Root, keyPath: ReferenceWritableKeyPath<Root, Input>) {
+        public init(object: Root, keyPath: ReferenceWritableKeyPath<Root, Input>, mode: ResumableAssignMode) {
             self.object = object
             self.keyPath = keyPath
+            self.mode = mode
         }
 
         public func receive(subscription: Subscription) {
@@ -67,7 +72,13 @@ extension Subscribers {
             case .awaitingSubscription, .terminal:
                 break
             }
-            return .max(1)
+            
+            switch mode {
+            case .singleDemandAllTheTime:
+                return .max(1)
+            case .singleDemandThenStop:
+                return .none
+            }
         }
 
         public func receive(completion _: Subscribers.Completion<Never>) {
@@ -82,7 +93,27 @@ extension Subscribers {
             status = .terminal
             object = nil
         }
+        
+        public func resume() {
+            guard case let .subscribed(subscription) = status else {
+                return
+            }
+            
+            switch mode {
+            case .singleDemandAllTheTime:
+                // we already send the demand at receive(_ value:)
+                break
+            case .singleDemandThenStop:
+                subscription.request(.max(1))
+            }
+        }
     }
+}
+
+
+public enum ResumableAssignMode {
+    case singleDemandAllTheTime // when it receives the first value, it will always after for the second one
+    case singleDemandThenStop   // after it receives the first value, it will stop requesting
 }
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
@@ -95,9 +126,9 @@ public extension ResumableCombine where Base: Publisher,  Base.Failure == Never 
     /// - Returns: A cancellable instance; used when you end assignment
     ///   of the received value. Deallocation of the result will tear down
     ///   the subscription stream.
-    func assign<Root>(to keyPath: ReferenceWritableKeyPath<Root, Output>, on object: Root) -> AnyCancellable {
-        let subscriber = Subscribers.LimitiedAssign(object: object, keyPath: keyPath)
+    func assign<Root>(to keyPath: ReferenceWritableKeyPath<Root, Output>, on object: Root, mode: ResumableAssignMode = .singleDemandAllTheTime) -> AnyResumable {
+        let subscriber = Subscribers.ResumableAssign(object: object, keyPath: keyPath, mode: mode)
         base.subscribe(subscriber)
-        return AnyCancellable(subscriber)
+        return subscriber
     }
 }

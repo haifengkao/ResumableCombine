@@ -9,7 +9,7 @@ import Combine
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public extension Subscribers {
-    class ResumableSink<Input, Failure: Error>: Subscriber, Cancellable, Resumable {
+    class ResumableSink<Input, Failure: Error>: Subscriber, Cancellable, ResumableProtocol {
         let receiveCompletion: (Subscribers.Completion<Failure>) -> Void
         let receiveValue: (Input) -> Bool
 
@@ -64,7 +64,7 @@ public extension ResumableCombine where Base: Publisher {
     func sink(
         receiveCompletion: @escaping (Subscribers.Completion<Failure>) -> Void,
         receiveValue: @escaping (Output) -> Bool
-    ) -> Cancellable & Resumable {
+    ) -> AnyResumable {
         let sink = Subscribers.ResumableSink<Output, Failure>(
             receiveCompletion: receiveCompletion,
             receiveValue: receiveValue

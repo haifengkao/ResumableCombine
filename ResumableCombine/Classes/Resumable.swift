@@ -8,6 +8,8 @@
 
 import Combine
 
+
+public typealias AnyResumable = Cancellable & ResumableProtocol
 /**
  Use `Reactive` proxy as customization point for constrained protocol extensions.
 
@@ -36,7 +38,7 @@ public struct ResumableCombine<Base> {
     }
 }
 
-public protocol Resumable {
+public protocol ResumableProtocol {
     func resume()
 }
 
