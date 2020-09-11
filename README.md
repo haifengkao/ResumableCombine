@@ -22,7 +22,7 @@ let subscription = [1,2,3,4,5].publisher
              return true
         }
     )
-    
+
 // Receive value: 1
 // Receive value: 2
 // Receive value: 3
@@ -84,7 +84,7 @@ Assign that will request one item then stop.
 
 We can use subscription.resume() to request for additional items.
 ```swift
-let subscription = (1 ... Int.max).publisher.rm.assign(to: \.value, on: object, mode: .singleDemand)
+let subscription = (1 ... Int.max).publisher.rm.assign(to: \.value, on: object, mode: .singleDemandThenStop)
 
 // object.value == 1
 subscription.resume()
