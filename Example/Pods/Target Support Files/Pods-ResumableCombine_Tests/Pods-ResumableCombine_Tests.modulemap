@@ -1,0 +1,6 @@
+framework module Pods_ResumableCombine_Tests {
+  umbrella header "Pods-ResumableCombine_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

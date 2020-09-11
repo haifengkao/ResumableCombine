@@ -1,0 +1,6 @@
+framework module ResumableCombine {
+  umbrella header "ResumableCombine-umbrella.h"
+
+  export *
+  module * { export * }
+}

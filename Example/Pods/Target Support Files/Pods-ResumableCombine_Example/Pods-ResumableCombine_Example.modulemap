@@ -1,0 +1,6 @@
+framework module Pods_ResumableCombine_Example {
+  umbrella header "Pods-ResumableCombine_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
