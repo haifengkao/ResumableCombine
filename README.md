@@ -24,6 +24,9 @@ let subscription = [1,2,3,4,5].publisher
     )
 ```
 
+
+
+
 Sink that will request one item then stop.
 
 We can use subscription.resume() to request for additional items.
@@ -62,6 +65,8 @@ class SomeObject {
 let object = SomeObject()
 let subscription = [1, 2, 3, 4, 5].publisher.rm.assign(to: \.value, on: object)
 ```
+
+
 
 Assign that will request one item then stop.
 
