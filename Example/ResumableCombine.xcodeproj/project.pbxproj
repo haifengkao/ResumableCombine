@@ -42,11 +42,11 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6EE541C113BC1F035EA1FB65 /* Pods_ResumableCombine_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResumableCombine_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		883B9E5C0736F7B432421EED /* ResumableCombine.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = ResumableCombine.podspec; path = ../ResumableCombine.podspec; sourceTree = "<group>"; };
+		883B9E5C0736F7B432421EED /* ResumableCombine.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ResumableCombine.podspec; path = ../ResumableCombine.podspec; sourceTree = "<group>"; };
 		CCD60ADACC8E7D1AABDE7CC5 /* Pods-ResumableCombine_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResumableCombine_Example.debug.xcconfig"; path = "Target Support Files/Pods-ResumableCombine_Example/Pods-ResumableCombine_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		EE6FEB3F0B78B7AC2EF07CE3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		EE6FEB3F0B78B7AC2EF07CE3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F10A0C248EDE21B9E11AF0C5 /* Pods_ResumableCombine_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResumableCombine_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FCAD1AB74B26C6CEEF3C5F10 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		FCAD1AB74B26C6CEEF3C5F10 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +77,6 @@
 				02F4197B79E3943AC8908E2E /* Pods-ResumableCombine_Tests.debug.xcconfig */,
 				3C8E5A2AD481D45CFA033358 /* Pods-ResumableCombine_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -443,7 +442,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -492,7 +491,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
