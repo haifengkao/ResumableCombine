@@ -1,6 +1,6 @@
 # ResumableCombine
 
-[![CI Status](https://img.shields.io/travis/Hai\ Feng\ Kao/ResumableCombine.svg?style=flat)](https://travis-ci.org/HaiFengKao/ResumableCombine)
+[![CI Status](https://img.shields.io/travis/HaiFengKao/ResumableCombine.svg?style=flat)](https://travis-ci.org/HaiFengKao/ResumableCombine)
 [![Version](https://img.shields.io/cocoapods/v/ResumableCombine.svg?style=flat)](https://cocoapods.org/pods/ResumableCombine)
 [![License](https://img.shields.io/cocoapods/l/ResumableCombine.svg?style=flat)](https://cocoapods.org/pods/ResumableCombine)
 [![Platform](https://img.shields.io/cocoapods/p/ResumableCombine.svg?style=flat)](https://cocoapods.org/pods/ResumableCombine)
