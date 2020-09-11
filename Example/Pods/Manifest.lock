@@ -1,7 +1,7 @@
 PODS:
   - Nimble (8.1.2)
   - Quick (2.2.1)
-  - ResumableCombine (0.6.0)
+  - ResumableCombine (0.7.0)
 
 DEPENDENCIES:
   - Nimble (~> 8.0)
@@ -20,7 +20,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Nimble: 3864815b4703c7ebffba875973c70e854489fbae
   Quick: f5754d69b7013f5864c29aab9ae6f0c79c5bc200
-  ResumableCombine: 2c4282d43f3f865d17d8ace83e20a4df3a468337
+  ResumableCombine: 0466f3e3bbe79332fdd2124dcf1dc118f5581e40
 
 PODFILE CHECKSUM: d58a641a618e1fb7bccbeaf1c7a2ac29e8355a86
 
