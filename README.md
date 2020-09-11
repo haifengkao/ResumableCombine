@@ -22,6 +22,12 @@ let subscription = [1,2,3,4,5].publisher
              return true
         }
     )
+    
+// Receive value: 1
+// Receive value: 2
+// Receive value: 3
+// Receive value: 4
+// Receive value: 5
 ```
 
 
@@ -31,7 +37,7 @@ Sink that will request one item then stop.
 
 We can use subscription.resume() to request for additional items.
 ```swift
-let subscription = (0 ... Int.max).publisher
+let subscription = (1 ... Int.max).publisher
     .rm.sink(
         receiveCompletion: { completion in
             print("Completion: \(completion)")
@@ -64,6 +70,12 @@ class SomeObject {
 
 let object = SomeObject()
 let subscription = [1, 2, 3, 4, 5].publisher.rm.assign(to: \.value, on: object)
+
+// object.value == 1
+// object.value == 2
+// object.value == 3
+// object.value == 4
+// object.value == 5
 ```
 
 
@@ -72,7 +84,7 @@ Assign that will request one item then stop.
 
 We can use subscription.resume() to request for additional items.
 ```swift
-let subscription = (0 ... Int.max).publisher.rm.assign(to: \.value, on: object, mode: .singleDemand)
+let subscription = (1 ... Int.max).publisher.rm.assign(to: \.value, on: object, mode: .singleDemand)
 
 // object.value == 1
 subscription.resume()
