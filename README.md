@@ -88,7 +88,7 @@ pod 'ResumableCombine'
 
 ## Author
 
-Hai\ Feng\ Kao, haifeng@cocoaspice.in
+Hai Feng Kao, haifeng@cocoaspice.in
 
 ## License
 
