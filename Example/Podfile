@@ -1,0 +1,15 @@
+source 'https://cdn.cocoapods.org/'
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'ResumableCombine_Example' do
+  pod 'ResumableCombine', :path => '../'
+
+  target 'ResumableCombine_Tests' do
+    inherit! :search_paths
+
+    pod 'Quick', '~> 2.0'
+    pod 'Nimble', '~> 8.0'
+  end
+end
