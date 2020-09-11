@@ -1,6 +1,6 @@
 {
   "name": "ResumableCombine",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "summary": "A short description of ResumableCombine.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/Hai\\ Feng\\ Kao/ResumableCombine",
@@ -12,8 +12,8 @@
     "Hai\\ Feng\\ Kao": "haifeng@cocoaspice.in"
   },
   "source": {
-    "git": "https://github.com/Hai\\ Feng\\ Kao/ResumableCombine.git",
-    "tag": "0.2.0"
+    "git": "https://github.com/HaiFengKao/ResumableCombine.git",
+    "tag": "0.3.0"
   },
   "platforms": {
     "ios": "13.0"
