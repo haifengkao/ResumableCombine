@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'ResumableCombine'
   s.version          = '0.5.0'
-  s.summary          = 'A short description of ResumableCombine.'
+  s.summary          = 'Handle backpressure in Swift Combine gracefully'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Swift Combine lacks of support for proper backpressure handling. Many of its operators just send request(.unlimited) for the first demand request. It renders the Combine's pull mechanism utterly uselesss. This project aims to fix this problem.on of the pod here.
                        DESC
 
   s.homepage         = 'https://github.com/Hai\ Feng\ Kao/ResumableCombine'
