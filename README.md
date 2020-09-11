@@ -51,14 +51,15 @@ let subscription = (1 ... Int.max).publisher
              return false
         }
     )
-
 // Receive value: 1
-subscription.resume()
 
 // Receive value: 2
 subscription.resume()
 
 // Receive value: 3
+subscription.resume()
+
+// Receive value: 4
 subscription.resume()
 ```
 
@@ -91,9 +92,11 @@ We can use `subscription.resume()` to request for additional items.
 let subscription = (1 ... Int.max).publisher.rm.assign(to: \.value, on: object, mode: .singleDemandThenStop)
 
 // object.value == 1
-subscription.resume()
 
 // object.value == 2
+subscription.resume()
+
+// object.value == 3
 subscription.resume()
 ```
 
