@@ -37,7 +37,7 @@ let subscription = [1,2,3,4,5].publisher
 
 Sink that will request one item then stop.
 
-We can use subscription.resume() to request for additional items.
+We can use `subscription.resume()` to request for additional items.
 ```swift
 let subscription = (1 ... Int.max).publisher
     .rm.sink(
@@ -86,7 +86,7 @@ let subscription = [1, 2, 3, 4, 5].publisher.rm.assign(to: \.value, on: object)
 
 Assign that will request one item then stop.
 
-We can use subscription.resume() to request for additional items.
+We can use `subscription.resume()` to request for additional items.
 ```swift
 let subscription = (1 ... Int.max).publisher.rm.assign(to: \.value, on: object, mode: .singleDemandThenStop)
 
