@@ -207,7 +207,8 @@ let subscription = (1 ... 100).publisher
 ```swift
 //  Swift Combine's sink will not pass, because it sends unlimited demands
 let subscription = (1 ... 100).publisher
-.rm.assert(maxDemand: .max(1), "sink handle backpressure awkwardly, it shall not pass").sink { (completion) in
+.rm.assert(maxDemand: .max(1), "sink handle backpressure awkwardly, it shall not pass")
+.sink { (completion) in
     print(completion)
 } receiveValue: { (value) -> Bool in
     print("Receive value: ", value)
