@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         subscription = (1 ... 100).publisher.rm.assert(minInterval: .milliseconds(10))
-            .rm.flatMap(maxPublishers: .max(1)) { _ in
+            .flatMap(maxPublishers: .max(1)) { _ in
                 return [1].publisher
             }
             .rm.sink { (completion) in
