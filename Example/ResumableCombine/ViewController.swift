@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        subscription = (1 ... 100).publisher.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
+        subscription = (1 ... 100).publisher.rm.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
             print("Receive flatMap:", value)
             return AnyPublisher([10, 20].publisher)
         }.rm.sink { (completion) in

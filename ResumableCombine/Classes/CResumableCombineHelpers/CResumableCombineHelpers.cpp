@@ -1,11 +1,11 @@
 //
-//  COpenCombineHelpers.cpp
+//  CResumableCombineHelpers.cpp
 //  
 //
 //  Created by Sergej Jaskiewicz on 23/09/2019.
 //
 
-#include "COpenCombineHelpers.h"
+#include "CResumableCombineHelpers.h"
 
 #include <atomic>
 #include <cstdlib>
@@ -19,21 +19,21 @@
 
 // Throwing exceptions through language boundaries is undefined behavior,
 // so we must catch all of them in our extern "C" functions.
-#define OPENCOMBINE_HANDLE_EXCEPTION_BEGIN try {
+#define RESUMABLECOMBINE_HANDLE_EXCEPTION_BEGIN try {
 
 // std::terminate will print the type and the error message of the in-flight exception.
-#define OPENCOMBINE_HANDLE_EXCEPTION_END } catch (...) { std::terminate(); }
+#define RESUMABLECOMBINE_HANDLE_EXCEPTION_END } catch (...) { std::terminate(); }
 
 // See 'double expansion trick'
-#define OPENCOMBINE_STRINGIFY(value) #value
-#define OPENCOMBINE_STRINGIFY_(value) OPENCOMBINE_STRINGIFY(value)
-#define OPENCOMBINE_STRING_LINE_NUMBER OPENCOMBINE_STRINGIFY_(__LINE__)
+#define RESUMABLECOMBINE_STRINGIFY(value) #value
+#define RESUMABLECOMBINE_STRINGIFY_(value) RESUMABLECOMBINE_STRINGIFY(value)
+#define RESUMABLECOMBINE_STRING_LINE_NUMBER RESUMABLECOMBINE_STRINGIFY_(__LINE__)
 
 // Throw an exception if the argument is non-zero with filename and line where the error
 // occured.
-#define OPENCOMBINE_HANDLE_PTHREAD_CALL(errc) \
+#define RESUMABLECOMBINE_HANDLE_PTHREAD_CALL(errc) \
     if ((errc) != 0) { \
-        const char* what = __FILE__ ":" OPENCOMBINE_STRING_LINE_NUMBER ": " #errc; \
+        const char* what = __FILE__ ":" RESUMABLECOMBINE_STRING_LINE_NUMBER ": " #errc; \
         throw std::system_error((errc), std::system_category(), what); \
     }
 
@@ -67,11 +67,11 @@ public:
     PThreadMutex& operator=(PThreadMutex&&) = delete;
 
     void lock() override final {
-        OPENCOMBINE_HANDLE_PTHREAD_CALL(pthread_mutex_lock(&mutex_));
+        RESUMABLECOMBINE_HANDLE_PTHREAD_CALL(pthread_mutex_lock(&mutex_));
     }
 
     void unlock() override final {
-        OPENCOMBINE_HANDLE_PTHREAD_CALL(pthread_mutex_unlock(&mutex_));
+        RESUMABLECOMBINE_HANDLE_PTHREAD_CALL(pthread_mutex_unlock(&mutex_));
     }
 
     ~PThreadMutex() {
@@ -79,14 +79,14 @@ public:
         // may fail.
         //
         // The altrenative is to just silently ignore the error, which is even worse.
-        OPENCOMBINE_HANDLE_PTHREAD_CALL(pthread_mutex_destroy(&mutex_));
+        RESUMABLECOMBINE_HANDLE_PTHREAD_CALL(pthread_mutex_destroy(&mutex_));
     }
 protected:
     class Attributes {
         pthread_mutexattr_t attrs_;
     public:
         Attributes() {
-            OPENCOMBINE_HANDLE_PTHREAD_CALL(pthread_mutexattr_init(&attrs_));
+            RESUMABLECOMBINE_HANDLE_PTHREAD_CALL(pthread_mutexattr_init(&attrs_));
         }
 
         Attributes(const Attributes&) = delete;
@@ -112,16 +112,16 @@ protected:
             // since pthread_mutexattr_destroy may fail.
             //
             // The altrenative is to just silently ignore the error, which is even worse.
-            OPENCOMBINE_HANDLE_PTHREAD_CALL(pthread_mutexattr_destroy(&attrs_));
+            RESUMABLECOMBINE_HANDLE_PTHREAD_CALL(pthread_mutexattr_destroy(&attrs_));
         }
     private:
         void setType(int type) {
-            OPENCOMBINE_HANDLE_PTHREAD_CALL(pthread_mutexattr_settype(&attrs_, type));
+            RESUMABLECOMBINE_HANDLE_PTHREAD_CALL(pthread_mutexattr_settype(&attrs_, type));
         }
     };
 
     void initialize(const Attributes& attributes) {
-        OPENCOMBINE_HANDLE_PTHREAD_CALL(pthread_mutex_init(&mutex_, attributes.raw()));
+        RESUMABLECOMBINE_HANDLE_PTHREAD_CALL(pthread_mutex_init(&mutex_, attributes.raw()));
     }
 };
 
@@ -171,12 +171,12 @@ public:
 
 extern "C" {
 
-uint64_t opencombine_next_combine_identifier(void) {
+uint64_t resumablecombine_next_combine_identifier(void) {
     return next_combine_identifier.fetch_add(1);
 }
 
-OpenCombineUnfairLock opencombine_unfair_lock_alloc(void) {
-    OPENCOMBINE_HANDLE_EXCEPTION_BEGIN
+ResumableCombineUnfairLock resumablecombine_unfair_lock_alloc(void) {
+    RESUMABLECOMBINE_HANDLE_EXCEPTION_BEGIN
 
 #ifdef __APPLE__
     if (__builtin_available(macOS 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)) {
@@ -188,55 +188,55 @@ OpenCombineUnfairLock opencombine_unfair_lock_alloc(void) {
     return {new PThreadMutex};
 #endif
 
-    OPENCOMBINE_HANDLE_EXCEPTION_END
+    RESUMABLECOMBINE_HANDLE_EXCEPTION_END
 }
 
-OpenCombineUnfairRecursiveLock opencombine_unfair_recursive_lock_alloc(void) {
-    OPENCOMBINE_HANDLE_EXCEPTION_BEGIN
+ResumableCombineUnfairRecursiveLock resumablecombine_unfair_recursive_lock_alloc(void) {
+    RESUMABLECOMBINE_HANDLE_EXCEPTION_BEGIN
     // TODO: Use os_unfair_recursive_lock on Darwin as soon as it becomes public API.
     return {new PThreadRecursiveMutex};
-    OPENCOMBINE_HANDLE_EXCEPTION_END
+    RESUMABLECOMBINE_HANDLE_EXCEPTION_END
 }
 
-void opencombine_unfair_lock_lock(OpenCombineUnfairLock lock) {
-    OPENCOMBINE_HANDLE_EXCEPTION_BEGIN
+void resumablecombine_unfair_lock_lock(ResumableCombineUnfairLock lock) {
+    RESUMABLECOMBINE_HANDLE_EXCEPTION_BEGIN
     static_cast<PlatformIndependentMutex*>(lock.opaque)->lock();
-    OPENCOMBINE_HANDLE_EXCEPTION_END
+    RESUMABLECOMBINE_HANDLE_EXCEPTION_END
 }
 
-void opencombine_unfair_lock_unlock(OpenCombineUnfairLock mutex) {
-    OPENCOMBINE_HANDLE_EXCEPTION_BEGIN
+void resumablecombine_unfair_lock_unlock(ResumableCombineUnfairLock mutex) {
+    RESUMABLECOMBINE_HANDLE_EXCEPTION_BEGIN
     static_cast<PlatformIndependentMutex*>(mutex.opaque)->unlock();
-    OPENCOMBINE_HANDLE_EXCEPTION_END
+    RESUMABLECOMBINE_HANDLE_EXCEPTION_END
 }
 
-void opencombine_unfair_lock_assert_owner(OpenCombineUnfairLock mutex) {
-    OPENCOMBINE_HANDLE_EXCEPTION_BEGIN
+void resumablecombine_unfair_lock_assert_owner(ResumableCombineUnfairLock mutex) {
+    RESUMABLECOMBINE_HANDLE_EXCEPTION_BEGIN
     static_cast<PlatformIndependentMutex*>(mutex.opaque)->assertOwner();
-    OPENCOMBINE_HANDLE_EXCEPTION_END
+    RESUMABLECOMBINE_HANDLE_EXCEPTION_END
 }
 
-void opencombine_unfair_recursive_lock_lock(OpenCombineUnfairRecursiveLock lock) {
-    OPENCOMBINE_HANDLE_EXCEPTION_BEGIN
+void resumablecombine_unfair_recursive_lock_lock(ResumableCombineUnfairRecursiveLock lock) {
+    RESUMABLECOMBINE_HANDLE_EXCEPTION_BEGIN
     static_cast<PlatformIndependentMutex*>(lock.opaque)->lock();
-    OPENCOMBINE_HANDLE_EXCEPTION_END
+    RESUMABLECOMBINE_HANDLE_EXCEPTION_END
 }
 
-void opencombine_unfair_recursive_lock_unlock(OpenCombineUnfairRecursiveLock mutex) {
-    OPENCOMBINE_HANDLE_EXCEPTION_BEGIN
+void resumablecombine_unfair_recursive_lock_unlock(ResumableCombineUnfairRecursiveLock mutex) {
+    RESUMABLECOMBINE_HANDLE_EXCEPTION_BEGIN
     static_cast<PlatformIndependentMutex*>(mutex.opaque)->unlock();
-    OPENCOMBINE_HANDLE_EXCEPTION_END
+    RESUMABLECOMBINE_HANDLE_EXCEPTION_END
 }
 
-void opencombine_unfair_lock_dealloc(OpenCombineUnfairLock lock) {
+void resumablecombine_unfair_lock_dealloc(ResumableCombineUnfairLock lock) {
     return delete static_cast<PlatformIndependentMutex*>(lock.opaque);
 }
 
-void opencombine_unfair_recursive_lock_dealloc(OpenCombineUnfairRecursiveLock lock) {
+void resumablecombine_unfair_recursive_lock_dealloc(ResumableCombineUnfairRecursiveLock lock) {
     return delete static_cast<PlatformIndependentMutex*>(lock.opaque);
 }
 
-void opencombine_stop_in_debugger(void) {
+void resumablecombine_stop_in_debugger(void) {
     raise(SIGTRAP);
 }
 
