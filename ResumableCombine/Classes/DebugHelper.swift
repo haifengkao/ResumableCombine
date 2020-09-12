@@ -56,9 +56,9 @@ extension ResumableCombine where Base: Publisher {
         })
     }
 
-    /// convinence method to ensure the publisher will receive the demands in a slow way
-    public func assertSingleAndSlow(_ message: String = "", file: StaticString = #file, line: UInt = #line) -> Publishers.HandleEvents<Publishers.HandleEvents<Base>> {
-        return self.assert(maxDemand: .max(1)).rm.assert(minInterval: .milliseconds(10), file: file, line: line)
+    /// convinence method to ensure the publisher will receive the demands slowly
+    public func assertSingleAndSlow(maxDemand: Subscribers.Demand = .max(1), minInterval: DispatchTimeInterval = .milliseconds(10), _ message: String = "", file: StaticString = #file, line: UInt = #line) -> Publishers.HandleEvents<Publishers.HandleEvents<Base>> {
+        return self.assert(maxDemand: maxDemand).rm.assert(minInterval: minInterval, file: file, line: line)
     }
 }
 
