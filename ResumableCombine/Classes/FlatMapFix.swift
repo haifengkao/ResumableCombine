@@ -213,7 +213,13 @@ extension Publishers.FlatMap {
                 lock.lock()
             } else {
                 downstreamDemand += demand
-                while !buffer.isEmpty && downstreamDemand > 0 {
+
+                if buffer.isEmpty, downstreamDemand > 0 {
+                    lock.unlock()
+                    requestOneMorePublisher()
+                    lock.lock()
+                }
+                while !buffer.isEmpty, downstreamDemand > 0 {
                     // FIXME: This has quadratic complexity.
                     // This is what Combine does.
                     // Can we improve perfomance by using e. g. Deque instead of Array?
@@ -327,7 +333,7 @@ extension Publishers.FlatMap {
                 let downstreamCompleted = releaseLockThenSendCompletionDownstreamIfNeeded(
                     outerFinished: outerFinished
                 )
-                if !downstreamCompleted {
+                if !downstreamCompleted, downstreamDemand > 0 {
                     requestOneMorePublisher()
                 }
             case .failure:
