@@ -184,6 +184,91 @@ let subscription = (1 ... 100).publisher.rm.flatMap(maxPublishers: .max(1)) { va
 ```
 
 
+## assert
+
+ResumableCombine provides an assert function to check if the downstream sends large demands. It's useful because many Swift Combine operators request unlimited demand, it will invalid the whole backpressure mechanism. When it happens, we can use `asser(maxDemand:)` to detect it.
+
+```swift
+//  rm.sink will pass the maxDemand test
+let subscription = (1 ... 100).publisher.rm.assert(maxDemand: .max(1), "rm.sink handle backpressure gracefully, will not assert").rm.sink { (completion) in
+    print(completion)
+} receiveValue: { (value) -> Bool in
+    print("Receive value: ", value)
+    return true
+}
+```
+
+```swift
+//  Swift Combine's sink will not pass, because it sends unlimited demands
+let subscription = (1 ... 100).publisher.rm.assert(maxDemand: .max(1), "sink handle backpressure awkwardly, it shall not pass").sink { (completion) in
+    print(completion)
+} receiveValue: { (value) -> Bool in
+    print("Receive value: ", value)
+    return true
+}
+```
+
+Another assert function `assert(accumulatedDemand:)` will check if any downstream request large volume of total demands.
+
+```swift
+//  rm.flatMap will pass the accumulatedDemand test
+let subscription = (1 ... 100).publisher
+.rm.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
+    print("Receive flatMap:", value)
+    return AnyPublisher([10].publisher)
+}.assert(accumulatedDemand: .max(1), "rm.flatMap handle backpressure gracefully, will not assert")
+.rm.sink { (completion) in
+    print(completion)
+} receiveValue: { (value) -> Bool in
+    print("Receive value: ", value)
+    return false // stop after signle demand
+}
+```
+
+```swift
+//  Swift Combine's flatMap will not pass the accumulatedDemand test
+let subscription = (1 ... 100).publisher
+.rm.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
+    print("Receive flatMap:", value)
+    return AnyPublisher([10].publisher)
+}.assert(accumulatedDemand: .max(1), "flatMap handle backpressure awkwardly, it shall not pass")
+.rm.sink { (completion) in
+    print(completion)
+} receiveValue: { (value) -> Bool in
+    print("Receive value: ", value)
+    return false // stop after signle demand
+}
+```
+
+`assert(minInterval:)` will assert if downstream sends new demands in a very fast speed.
+
+```swift
+let subscription = (1 ... 100).publisher.rm.assert(minInterval: .milliseconds(10), "will not assert")
+    .rm.flatMap(maxPublishers: .max(1)) { _ in
+        return [1].publisher
+    }
+    .rm.sink { (completion) in
+    print(completion)
+} receiveValue: { (value) in
+    print("Receive value: ", value)
+    return false
+}
+```
+
+```swift
+// Swift Combine's flatMap requests single demand at a time, but it will send all the requests in a while loop. It will trigger the assert
+let subscription = (1 ... 100).publisher.rm.assert(minInterval: .milliseconds(10), "will assert")
+    .flatMap(maxPublishers: .max(1)) { _ in
+        return [1].publisher
+    }
+    .rm.sink { (completion) in
+    print(completion)
+} receiveValue: { (value) in
+    print("Receive value: ", value)
+    return false
+}
+```
+
 ## Requirements
 ios 13
 

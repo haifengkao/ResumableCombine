@@ -3,13 +3,13 @@
   "version": "0.9.0",
   "summary": "Handle backpressure in Swift Combine gracefully",
   "description": "Swift Combine lacks of support for proper backpressure handling. Many of its operators just send request(.unlimited) for the first demand request. It renders the Combine's pull mechanism utterly uselesss. This project aims to fix this problem.on of the pod here.",
-  "homepage": "https://github.com/Hai\\ Feng\\ Kao/ResumableCombine",
+  "homepage": "https://github.com/Hai Feng Kao/ResumableCombine",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "Hai\\ Feng\\ Kao": "haifeng@cocoaspice.in"
+    "Hai Feng Kao": "haifeng@cocoaspice.in"
   },
   "source": {
     "git": "https://github.com/HaiFengKao/ResumableCombine.git",

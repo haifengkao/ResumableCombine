@@ -21,10 +21,10 @@ Pod::Spec.new do |s|
 Swift Combine lacks of support for proper backpressure handling. Many of its operators just send request(.unlimited) for the first demand request. It renders the Combine's pull mechanism utterly uselesss. This project aims to fix this problem.on of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/Hai\ Feng\ Kao/ResumableCombine'
+  s.homepage         = 'https://github.com/Hai Feng Kao/ResumableCombine'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Hai\ Feng\ Kao' => 'haifeng@cocoaspice.in' }
+  s.author           = { 'Hai Feng Kao' => 'haifeng@cocoaspice.in' }
   s.source           = { :git => 'https://github.com/HaiFengKao/ResumableCombine.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   s.swift_version = '5.1'

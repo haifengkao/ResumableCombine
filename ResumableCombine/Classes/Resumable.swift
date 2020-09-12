@@ -1,8 +1,8 @@
 //
 //  Resumable.swift
-//  workspace.json
+//  ResumableCombine
 //
-//  Created by Hai-Feng Kao on 2020-09-11
+//  Created by Hai Feng Kao on 2020-09-11
 //
 //
 
