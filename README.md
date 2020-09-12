@@ -149,12 +149,12 @@ let subscription = (1 ... 100).publisher.flatMap(maxPublishers: .max(1)) { value
 // Receive flatMap: 2
 ```
 
-ResumbableCombine provides `rm.FlatMap` will fix these problems
+ResumbableCombine provides `rm.FlatMap` to fix these problems
 
 ```swift
 let subscription = (1 ... 100).publisher.rm.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
     print("Receive flatMap:", value)
-    return AnyPublisher([10, 20].publisher)
+    return AnyPublisher([10].publisher) // sends single value then complete
 }.rm.sink { (completion) in
     print(completion)
 } receiveValue: { (value) -> Bool in
@@ -170,7 +170,7 @@ let subscription = (1 ... 100).publisher.rm.flatMap(maxPublishers: .max(1)) { va
 ```swift
 let subscription = (1 ... 100).publisher.rm.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
     print("Receive flatMap:", value)
-    return AnyPublisher([10].publisher)
+    return AnyPublisher([10, 20].publisher) // sends 2 values then complete
 }.rm.sink { (completion) in
     print(completion)
 } receiveValue: { (value) -> Bool in
