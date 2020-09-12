@@ -15,9 +15,9 @@ extension ResumableCombine where Base: Publisher {
     ///   - maxDemand: the max demand allowed
     ///   - message: the assert message
     /// - Returns: HandleEvents publisher
-    public func assert(maxDemand: Subscribers.Demand, _ message: String = "") -> Publishers.HandleEvents<Base> {
+    public func assert(maxDemand: Subscribers.Demand, _ message: String = "", file: StaticString = #file, line: UInt = #line) -> Publishers.HandleEvents<Base> {
         return base.handleEvents(receiveRequest: { demand in
-            Swift.assert(demand <= maxDemand, message)
+            Swift.assert(demand <= maxDemand, message, file: file, line: line)
         })
     }
 
@@ -27,12 +27,12 @@ extension ResumableCombine where Base: Publisher {
     ///   - accumulatedDemand: the total accumulated demand allowed
     ///   - message: the assert message
     /// - Returns: HandleEvents publisher
-    public func assert(accumulatedDemand: Subscribers.Demand, _ message: String = "") -> Publishers.HandleEvents<Base> {
+    public func assert(accumulatedDemand: Subscribers.Demand, _ message: String = "", file: StaticString = #file, line: UInt = #line) -> Publishers.HandleEvents<Base> {
         var currentDemand: Subscribers.Demand = .max(0)
         return base.handleEvents(receiveRequest: { demand in
 
             currentDemand += demand
-            Swift.assert(currentDemand <= accumulatedDemand, message)
+            Swift.assert(currentDemand <= accumulatedDemand, message, file: file, line: line)
         })
     }
 
@@ -42,18 +42,23 @@ extension ResumableCombine where Base: Publisher {
     ///   - minInterval: the minimum time interval allowed to send new demands
     ///   - message: the assert message
     /// - Returns: HandleEvents publisher
-    public func assert(minInterval: DispatchTimeInterval, _ message: String = "") -> Publishers.HandleEvents<Base> {
+    public func assert(minInterval: DispatchTimeInterval, _ message: String = "", file: StaticString = #file, line: UInt = #line) -> Publishers.HandleEvents<Base> {
         var lastDemandDate: Date?
 
         return base.handleEvents(receiveRequest: { _ in
             let currentDate = Date()
             if let lastDate = lastDemandDate,
                lastDate.addingDispatchInterval(minInterval) > currentDate {
-                Swift.assertionFailure(message)
+                Swift.assertionFailure(message, file: file, line: line)
             } else {
                 lastDemandDate = currentDate
             }
         })
+    }
+
+    /// convinence method to ensure the publisher will receive the demands in a slow way
+    public func assertSingleAndSlow(_ message: String = "", file: StaticString = #file, line: UInt = #line) -> Publishers.HandleEvents<Publishers.HandleEvents<Base>> {
+        return self.assert(maxDemand: .max(1)).rm.assert(minInterval: .milliseconds(10), file: file, line: line)
     }
 }
 
