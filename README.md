@@ -105,7 +105,8 @@ subscription.resume()
 Combine's `FlatMap` works quite unexpectedly. Despite the resumable sink has stooped the demand. `FlatMap` continues sending all its values.
 
 ```swift
-let subscription = (1 ... 100).publisher.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
+let subscription = (1 ... 100).publisher
+.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
     print("Receive flatMap:", value)
     return AnyPublisher([10].publisher) // sends single value then complete
 }.rm.sink { (completion) in
@@ -133,7 +134,8 @@ let subscription = (1 ... 100).publisher.flatMap(maxPublishers: .max(1)) { value
 
 If we let the publisher inside `flatMap` send 2 values, `FlatMap` will send 2 values, despite the resumable sink only requests single demand.
 ```swift
-let subscription = (1 ... 100).publisher.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
+let subscription = (1 ... 100).publisher
+.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
     print("Receive flatMap:", value)
     return AnyPublisher([10, 20].publisher) // sends 2 values then complete
 }.rm.sink { (completion) in
@@ -152,7 +154,8 @@ let subscription = (1 ... 100).publisher.flatMap(maxPublishers: .max(1)) { value
 ResumbableCombine provides `rm.FlatMap` to fix these problems
 
 ```swift
-let subscription = (1 ... 100).publisher.rm.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
+let subscription = (1 ... 100).publisher
+.rm.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
     print("Receive flatMap:", value)
     return AnyPublisher([10].publisher) // sends single value then complete
 }.rm.sink { (completion) in
@@ -168,7 +171,8 @@ let subscription = (1 ... 100).publisher.rm.flatMap(maxPublishers: .max(1)) { va
 ```
 
 ```swift
-let subscription = (1 ... 100).publisher.rm.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
+let subscription = (1 ... 100).publisher
+.rm.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
     print("Receive flatMap:", value)
     return AnyPublisher([10, 20].publisher) // sends 2 values then complete
 }.rm.sink { (completion) in
@@ -190,7 +194,9 @@ ResumableCombine provides an assert function to check if the downstream sends la
 
 ```swift
 //  rm.sink will pass the maxDemand test
-let subscription = (1 ... 100).publisher.rm.assert(maxDemand: .max(1), "rm.sink handle backpressure gracefully, will not assert").rm.sink { (completion) in
+let subscription = (1 ... 100).publisher
+.rm.assert(maxDemand: .max(1), "rm.sink handle backpressure gracefully, will not assert")
+.rm.sink { (completion) in
     print(completion)
 } receiveValue: { (value) -> Bool in
     print("Receive value: ", value)
@@ -200,7 +206,8 @@ let subscription = (1 ... 100).publisher.rm.assert(maxDemand: .max(1), "rm.sink 
 
 ```swift
 //  Swift Combine's sink will not pass, because it sends unlimited demands
-let subscription = (1 ... 100).publisher.rm.assert(maxDemand: .max(1), "sink handle backpressure awkwardly, it shall not pass").sink { (completion) in
+let subscription = (1 ... 100).publisher
+.rm.assert(maxDemand: .max(1), "sink handle backpressure awkwardly, it shall not pass").sink { (completion) in
     print(completion)
 } receiveValue: { (value) -> Bool in
     print("Receive value: ", value)
@@ -243,7 +250,8 @@ let subscription = (1 ... 100).publisher
 `assert(minInterval:)` will assert if downstream sends new demands in a very fast speed.
 
 ```swift
-let subscription = (1 ... 100).publisher.rm.assert(minInterval: .milliseconds(10), "will not assert")
+let subscription = (1 ... 100).publisher
+    .rm.assert(minInterval: .milliseconds(10), "will not assert")
     .rm.flatMap(maxPublishers: .max(1)) { _ in
         return [1].publisher
     }
@@ -256,8 +264,11 @@ let subscription = (1 ... 100).publisher.rm.assert(minInterval: .milliseconds(10
 ```
 
 ```swift
-// Swift Combine's flatMap requests single demand at a time, but it will send all the requests in a while loop. It will trigger the assert
-let subscription = (1 ... 100).publisher.rm.assert(minInterval: .milliseconds(10), "will assert")
+// Swift Combine's flatMap requests single demand at a time
+// but it will send all the requests in a while loop. 
+// It will trigger the assert
+let subscription = (1 ... 100).publisher
+    .rm.assert(minInterval: .milliseconds(10), "will assert")
     .flatMap(maxPublishers: .max(1)) { _ in
         return [1].publisher
     }
