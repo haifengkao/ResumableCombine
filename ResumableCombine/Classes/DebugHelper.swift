@@ -36,10 +36,10 @@ extension ResumableCombine where Base: Publisher {
         })
     }
 
-    /// assert when the downstream request total demands which exceed the specified value.
-    /// useful to detect if any downstream request too many values
+    /// assert when the downstream request demands in a very short interval
+    /// useful to detect if any downstream requests too fast
     /// - Parameters:
-    ///   - accumulatedDemand: the total accumulated demand allowed
+    ///   - minInterval: the minimum time interval allowed to send new demands
     ///   - message: the assert message
     /// - Returns: HandleEvents publisher
     public func assert(minInterval: DispatchTimeInterval, _ message: String = "") -> Publishers.HandleEvents<Base> {
