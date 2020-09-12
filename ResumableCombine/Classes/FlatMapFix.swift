@@ -22,16 +22,15 @@ extension Publisher {
         _ transform: @escaping (Output) -> Child
     ) -> Publishers.FlatMap<Child, Self>
         where Result == Child.Output, Failure == Child.Failure {
-            return .init(upstream: self,
-                         maxPublishers: maxPublishers,
-                         transform: transform)
+        return .init(upstream: self,
+                     maxPublishers: maxPublishers,
+                     transform: transform)
     }
 }
 
 extension Publishers {
     public struct FlatMap<Child: Publisher, Upstream: Publisher>: Publisher
-        where Child.Failure == Upstream.Failure
-    {
+        where Child.Failure == Upstream.Failure {
         public typealias Output = Child.Output
 
         public typealias Failure = Upstream.Failure
@@ -48,9 +47,9 @@ extension Publishers {
             self.maxPublishers = maxPublishers
             self.transform = transform
         }
+
         public func receive<Downstream: Subscriber>(subscriber: Downstream)
-            where Child.Output == Downstream.Input, Upstream.Failure == Downstream.Failure
-        {
+            where Child.Output == Downstream.Input, Upstream.Failure == Downstream.Failure {
             let inner = Inner(downstream: subscriber,
                               maxPublishers: maxPublishers,
                               map: transform)
@@ -61,14 +60,13 @@ extension Publishers {
 }
 
 extension Publishers.FlatMap {
-    private final class Inner<Downstream: Subscriber>
-        : Subscriber,
-          Subscription,
-          CustomStringConvertible,
-          CustomReflectable,
-          CustomPlaygroundDisplayConvertible
-        where Downstream.Input == Child.Output, Downstream.Failure == Upstream.Failure
-    {
+    private final class Inner<Downstream: Subscriber>:
+        Subscriber,
+        Subscription,
+        CustomStringConvertible,
+        CustomReflectable,
+        CustomPlaygroundDisplayConvertible
+        where Downstream.Input == Child.Output, Downstream.Failure == Upstream.Failure {
         typealias Input = Upstream.Output
         typealias Failure = Upstream.Failure
 
@@ -100,7 +98,7 @@ extension Publishers.FlatMap {
         private var downstreamRecursive = false
 
         private var innerRecursive = false
-        private var subscriptions = [SubscriptionIndex : Subscription]()
+        private var subscriptions = [SubscriptionIndex: Subscription]()
         private var nextInnerIndex: SubscriptionIndex = 0
         private var pendingSubscriptions = 0
         private var buffer = [(SubscriptionIndex, Child.Output)]()
@@ -372,9 +370,9 @@ extension Publishers.FlatMap {
             outerFinished: Bool
         ) -> Bool {
             #if DEBUG
-            lock.assertOwner() // Sanity check
+                lock.assertOwner() // Sanity check
             #endif
-            if !cancelledOrCompleted && outerFinished && buffer.isEmpty &&
+            if !cancelledOrCompleted, outerFinished, buffer.isEmpty,
                 subscriptions.count + pendingSubscriptions == 0 {
                 cancelledOrCompleted = true
                 lock.unlock()
@@ -391,9 +389,9 @@ extension Publishers.FlatMap {
         // MARK: - Side
 
         private struct Side: Subscriber,
-                             CustomStringConvertible,
-                             CustomReflectable,
-                             CustomPlaygroundDisplayConvertible {
+            CustomStringConvertible,
+            CustomReflectable,
+            CustomPlaygroundDisplayConvertible {
             private let index: SubscriptionIndex
             private let inner: Inner
             fileprivate let combineIdentifier = CombineIdentifier()

@@ -22,7 +22,6 @@ extension Subscribers {
         CustomStringConvertible,
         CustomReflectable,
         CustomPlaygroundDisplayConvertible {
-        
         // NOTE: this class has been audited for thread safety.
         // Combine doesn't use any locking here.
 
@@ -33,16 +32,16 @@ extension Subscribers {
         public let keyPath: ReferenceWritableKeyPath<Root, Input>
 
         private var status = SubscriptionStatus.awaitingSubscription
-        
+
         private let mode: ResumableAssignMode
-        
+
         public var description: String { return "ResumableAssign \(Root.self)." }
 
         public var customMirror: Mirror {
             let children: [Mirror.Child] = [
                 ("object", object as Any),
                 ("keyPath", keyPath),
-                ("status", status as Any)
+                ("status", status as Any),
             ]
             return Mirror(self, children: children)
         }
@@ -72,7 +71,7 @@ extension Subscribers {
             case .awaitingSubscription, .terminal:
                 break
             }
-            
+
             switch mode {
             case .singleDemandAllTheTime:
                 return .max(1)
@@ -93,12 +92,12 @@ extension Subscribers {
             status = .terminal
             object = nil
         }
-        
+
         public func resume() {
             guard case let .subscribed(subscription) = status else {
                 return
             }
-            
+
             switch mode {
             case .singleDemandAllTheTime:
                 // we already send the demand at receive(_ value:)
@@ -110,14 +109,13 @@ extension Subscribers {
     }
 }
 
-
 public enum ResumableAssignMode {
     case singleDemandAllTheTime // when it receives the first value, it will always after for the second one
-    case singleDemandThenStop   // after it receives the first value, it will stop requesting
+    case singleDemandThenStop // after it receives the first value, it will stop requesting
 }
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-public extension ResumableCombine where Base: Publisher,  Base.Failure == Never {
+public extension ResumableCombine where Base: Publisher, Base.Failure == Never {
     /// Assigns each element from a Publisher to a property on an object.
     ///
     /// - Parameters:
@@ -126,7 +124,9 @@ public extension ResumableCombine where Base: Publisher,  Base.Failure == Never 
     /// - Returns: A cancellable instance; used when you end assignment
     ///   of the received value. Deallocation of the result will tear down
     ///   the subscription stream.
-    func assign<Root>(to keyPath: ReferenceWritableKeyPath<Root, Output>, on object: Root, mode: ResumableAssignMode = .singleDemandAllTheTime) -> AnyResumable {
+    func assign<Root>(to keyPath: ReferenceWritableKeyPath<Root, Output>,
+                      on object: Root,
+                      mode: ResumableAssignMode = .singleDemandAllTheTime) -> AnyResumable {
         let subscriber = Subscribers.ResumableAssign(object: object, keyPath: keyPath, mode: mode)
         base.subscribe(subscriber)
         return subscriber
