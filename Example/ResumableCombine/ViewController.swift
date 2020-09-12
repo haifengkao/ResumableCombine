@@ -8,11 +8,33 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+import Combine
+import ResumableCombine
 
+class ViewController: UIViewController {
+    var subscription: AnyResumable?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        subscription = (1 ... 100).publisher.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
+            print("Receive flatMap:", value)
+            return AnyPublisher([10, 20].publisher)
+        }.rm.sink { (completion) in
+            print(completion)
+        } receiveValue: { (value) -> Bool in
+            print("Receive value: ", value)
+            
+            return false
+        }
+        
+        
+        //subscription?.resume()
+        
+        //subscription?.resume()
+        
+        /*subscription?.resume()*/
+
     }
 
     override func didReceiveMemoryWarning() {

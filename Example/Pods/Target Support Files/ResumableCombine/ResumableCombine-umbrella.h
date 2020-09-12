@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "COpenCombineHelpers.h"
 
 FOUNDATION_EXPORT double ResumableCombineVersionNumber;
 FOUNDATION_EXPORT const unsigned char ResumableCombineVersionString[];

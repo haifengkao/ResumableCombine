@@ -4,7 +4,9 @@
 //  Created by Eric Patey on 16.08.2019.
 //
 
-extension Publisher {
+import Combine
+public extension ResumableCombine where Base: Publisher {
+
     /// Transforms all elements from an upstream publisher into a new or existing
     /// publisher.
     ///
@@ -12,24 +14,24 @@ extension Publisher {
     /// output.
     ///
     /// - Parameters:
-    ///   - maxPublishers: The maximum number of publishers produced by this method.
+    ///   - maxPublishers: The maximum number of publishers produced by this method. Default to .max(1) to support backpressure
     ///   - transform: A closure that takes an element as a parameter and returns a
     ///     publisher that produces elements of that type.
     /// - Returns: A publisher that transforms elements from an upstream publisher into
     ///   a publisher of that element’s type.
-    public func flatMap<Result, Child: Publisher>(
-        maxPublishers: Subscribers.Demand = .unlimited,
+    func flatMap<Result, Child: Publisher>(
+        maxPublishers: Subscribers.Demand = .max(1),
         _ transform: @escaping (Output) -> Child
-    ) -> Publishers.FlatMap<Child, Self>
+    ) -> Publishers.FlatMapFix<Child, Base>
         where Result == Child.Output, Failure == Child.Failure {
-        return .init(upstream: self,
+        return .init(upstream: base,
                      maxPublishers: maxPublishers,
                      transform: transform)
     }
 }
 
 extension Publishers {
-    public struct FlatMap<Child: Publisher, Upstream: Publisher>: Publisher
+    public struct FlatMapFix<Child: Publisher, Upstream: Publisher>: Publisher
         where Child.Failure == Upstream.Failure {
         public typealias Output = Child.Output
 
@@ -59,7 +61,7 @@ extension Publishers {
     }
 }
 
-extension Publishers.FlatMap {
+extension Publishers.FlatMapFix {
     private final class Inner<Downstream: Subscriber>:
         Subscriber,
         Subscription,
@@ -266,7 +268,7 @@ extension Publishers.FlatMap {
 
         // MARK: - Reflection
 
-        fileprivate var description: String { return "FlatMap" }
+        fileprivate var description: String { return "FlatMapFix" }
 
         fileprivate var customMirror: Mirror {
             return Mirror(self, children: EmptyCollection())
@@ -413,7 +415,7 @@ extension Publishers.FlatMap {
                 inner.receiveInner(completion: completion, index)
             }
 
-            fileprivate var description: String { return "FlatMap" }
+            fileprivate var description: String { return "FlatMapFix" }
 
             fileprivate var customMirror: Mirror {
                 let children = CollectionOfOne<Mirror.Child>(
@@ -423,6 +425,16 @@ extension Publishers.FlatMap {
             }
 
             fileprivate var playgroundDescription: Any { return description }
+        }
+    }
+}
+
+
+extension Subscribers.Demand {
+    internal func assertNonZero(file: StaticString = #file,
+                                line: UInt = #line) {
+        if self == .none {
+            fatalError("API Violation: demand must not be zero", file: file, line: line)
         }
     }
 }

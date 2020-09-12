@@ -19,7 +19,7 @@ let subscription = [1,2,3,4,5].publisher
         },
         receiveValue: { value -> Bool in
              print("Receive value: \(value)")
-             
+
              // return true indicates that we want to request for another demand
              return true
         }
@@ -37,7 +37,7 @@ let subscription = [1,2,3,4,5].publisher
 
 Sink that will request one item then stop.
 
-We can use subscription.resume() to request for additional items.
+We can use `subscription.resume()` to request for additional items.
 ```swift
 let subscription = (1 ... Int.max).publisher
     .rm.sink(
@@ -46,19 +46,20 @@ let subscription = (1 ... Int.max).publisher
         },
         receiveValue: { value -> Bool in
              print("Receive value: \(value)")
-             
-             // return false will stop the demands 
+
+             // return false will stop the demands
              return false
         }
     )
-
 // Receive value: 1
-subscription.resume()
 
 // Receive value: 2
 subscription.resume()
 
 // Receive value: 3
+subscription.resume()
+
+// Receive value: 4
 subscription.resume()
 ```
 
@@ -86,16 +87,102 @@ let subscription = [1, 2, 3, 4, 5].publisher.rm.assign(to: \.value, on: object)
 
 Assign that will request one item then stop.
 
-We can use subscription.resume() to request for additional items.
+We can use `subscription.resume()` to request for additional items.
 ```swift
 let subscription = (1 ... Int.max).publisher.rm.assign(to: \.value, on: object, mode: .singleDemandThenStop)
 
 // object.value == 1
-subscription.resume()
 
 // object.value == 2
 subscription.resume()
+
+// object.value == 3
+subscription.resume()
 ```
+
+
+## FlatMap
+Combine's `FlatMap` works quite unexpectedly. Despite the resumable sink has stooped the demand. `FlatMap` continues sending all its values.
+
+```swift
+let subscription = (1 ... 100).publisher.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
+    print("Receive flatMap:", value)
+    return AnyPublisher([10].publisher) // sends single value then complete
+}.rm.sink { (completion) in
+    print(completion)
+} receiveValue: { (value) -> Bool in
+    print("Receive value: ", value)
+
+    return false // stop requesting new demands
+}
+// Receive flatMap: 1
+// Receive value:  10
+// Receive flatMap: 2
+// Receive flatMap: 3
+// Receive flatMap: 4
+// Receive flatMap: 5
+// Receive flatMap: 6
+// Receive flatMap: 7
+// Receive flatMap: 8
+// Receive flatMap: 9
+// Receive flatMap: 10
+// ...
+// Receive flatMap: 100
+```
+
+
+If we let the publisher inside `flatMap` send 2 values, `FlatMap` will send 2 values, despite the resumable sink only requests single demand.
+```swift
+let subscription = (1 ... 100).publisher.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
+    print("Receive flatMap:", value)
+    return AnyPublisher([10, 20].publisher) // sends 2 values then complete
+}.rm.sink { (completion) in
+    print(completion)
+} receiveValue: { (value) -> Bool in
+    print("Receive value: ", value)
+
+    return false // stop requesting new demands
+}
+
+// Receive flatMap: 1
+// Receive value:  10
+// Receive flatMap: 2
+```
+
+ResumbableCombine provides `rm.FlatMap` will fix these problems
+
+```swift
+let subscription = (1 ... 100).publisher.rm.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
+    print("Receive flatMap:", value)
+    return AnyPublisher([10, 20].publisher)
+}.rm.sink { (completion) in
+    print(completion)
+} receiveValue: { (value) -> Bool in
+    print("Receive value: ", value)
+
+    return false // stop requesting new demands
+}
+
+// Receive flatMap: 1
+// Receive value:  10
+```
+
+```swift
+let subscription = (1 ... 100).publisher.rm.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
+    print("Receive flatMap:", value)
+    return AnyPublisher([10].publisher)
+}.rm.sink { (completion) in
+    print(completion)
+} receiveValue: { (value) -> Bool in
+    print("Receive value: ", value)
+
+    return false // stop requesting new demands
+}
+
+// Receive flatMap: 1
+// Receive value:  10
+```
+
 
 ## Requirements
 ios 13
