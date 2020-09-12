@@ -14,13 +14,13 @@ public extension ResumableCombine where Base: Publisher {
     /// output.
     ///
     /// - Parameters:
-    ///   - maxPublishers: The maximum number of publishers produced by this method. Default to .max(1) to support backpressure
+    ///   - maxPublishers: The maximum number of publishers produced by this method. Default to .unlimited to support compatibility with original flatMap. you have to use maxPublisher:.max(1) to ensure backpressure is respected
     ///   - transform: A closure that takes an element as a parameter and returns a
     ///     publisher that produces elements of that type.
     /// - Returns: A publisher that transforms elements from an upstream publisher into
     ///   a publisher of that element’s type.
     func flatMap<Result, Child: Publisher>(
-        maxPublishers: Subscribers.Demand = .max(1),
+        maxPublishers: Subscribers.Demand = .unlimited,
         _ transform: @escaping (Output) -> Child
     ) -> Publishers.FlatMapFix<Child, Base>
         where Result == Child.Output, Failure == Child.Failure {
