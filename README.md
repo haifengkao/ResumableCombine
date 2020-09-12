@@ -154,22 +154,6 @@ ResumbableCombine provides `rm.FlatMap` to fix these problems
 ```swift
 let subscription = (1 ... 100).publisher.rm.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
     print("Receive flatMap:", value)
-    return AnyPublisher([10, 20].publisher) // sends 2 values then complete
-}.rm.sink { (completion) in
-    print(completion)
-} receiveValue: { (value) -> Bool in
-    print("Receive value: ", value)
-
-    return false // stop requesting new demands
-}
-
-// Receive flatMap: 1
-// Receive value:  10
-```
-
-```swift
-let subscription = (1 ... 100).publisher.rm.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
-    print("Receive flatMap:", value)
     return AnyPublisher([10].publisher) // sends single value then complete
 }.rm.sink { (completion) in
     print(completion)
@@ -183,6 +167,22 @@ let subscription = (1 ... 100).publisher.rm.flatMap(maxPublishers: .max(1)) { va
 // Receive value:  10
 ```
 
+
+```swift
+let subscription = (1 ... 100).publisher.rm.flatMap(maxPublishers: .max(1)) { value -> AnyPublisher<Int, Never> in
+    print("Receive flatMap:", value)
+    return AnyPublisher([10, 20].publisher) // sends 2 values then complete
+}.rm.sink { (completion) in
+    print(completion)
+} receiveValue: { (value) -> Bool in
+    print("Receive value: ", value)
+
+    return false // stop requesting new demands
+}
+
+// Receive flatMap: 1
+// Receive value:  10
+```
 
 ## Requirements
 ios 13
