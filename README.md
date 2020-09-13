@@ -8,7 +8,7 @@
 
 Swift Combine lacks of support for proper backpressure handling. Many of its operators just send `request(.unlimited)` for the first demand request. It renders the Combine's pull mechanism utterly uselesss. This project aims to fix this problem.
 
-## Example
+## rm.sink
 
 Sink that will request one item at a time.
 ```swift
@@ -63,6 +63,7 @@ subscription.resume()
 subscription.resume()
 ```
 
+## rm.assign
 Assign that will request one item at a time.
 ```swift
 class SomeObject {
@@ -101,7 +102,7 @@ subscription.resume()
 ```
 
 
-## FlatMap
+## rm.flatMap
 Combine's `FlatMap` works quite unexpectedly. Despite the resumable sink has stooped the demand. `FlatMap` continues sending all its values.
 
 ```swift
@@ -151,7 +152,7 @@ let subscription = (1 ... 100).publisher
 // Receive flatMap: 2
 ```
 
-ResumbableCombine provides `rm.FlatMap` to fix these problems
+ResumbableCombine provides `rm.flatMap` to fix these problems
 
 ```swift
 let subscription = (1 ... 100).publisher
@@ -188,7 +189,7 @@ let subscription = (1 ... 100).publisher
 ```
 
 
-## assert
+## rm.assert
 
 ResumableCombine provides an assert function to check if the downstream sends large demands. It's useful because many Swift Combine operators request unlimited demand, it will invalid the whole backpressure mechanism. When it happens, we can use `asser(maxDemand:)` to detect it.
 
