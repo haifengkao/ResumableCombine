@@ -1,7 +1,7 @@
 PODS:
   - Nimble (9.2.1)
   - Quick (4.0.0)
-  - ResumableCombine (0.15.0)
+  - ResumableCombine (0.16.0)
 
 DEPENDENCIES:
   - Nimble (~> 9.0)
@@ -17,7 +17,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
   Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
-  ResumableCombine: 90080b2bf449355e24337cb6d9d0b54f6611c3ca
+  ResumableCombine: 684cc7c0a6676038500e41a6db7f30ba888ca050
 
 COCOAPODS: 1.11.2
 

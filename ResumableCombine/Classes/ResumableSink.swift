@@ -57,7 +57,6 @@ public extension Subscribers {
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public extension ResumableCombine where Base: Publisher {
-
     typealias Failure = Base.Failure
     typealias Output = Base.Output
 
@@ -84,45 +83,43 @@ public extension ResumableCombine where Base: Publisher {
 //         buffer.append(value)
 //         return buffer.count < 5
 //     }
-    // )
+// )
 
-    // let cancellable = Timer.publish(every: 1, on: .main, in: .default)
+// let cancellable = Timer.publish(every: 1, on: .main, in: .default)
 //     .autoconnect()
 //     .sink { _ in
 //         buffer.removeAll()
 //         subscriber.resume()
 //     }
 
-
-
 /*
 
-extension Reactive where Base: UIDatePicker {
-    /// Reactive wrapper for `date` property.
-    public var date: ControlProperty<Date> {
-        return value
-    }
+ extension Reactive where Base: UIDatePicker {
+     /// Reactive wrapper for `date` property.
+     public var date: ControlProperty<Date> {
+         return value
+     }
 
-    /// Reactive wrapper for `date` property.
-    public var value: ControlProperty<Date> {
-        return base.rx.controlPropertyWithDefaultEvents(
-            getter: { datePicker in
-                datePicker.date
-            }, setter: { datePicker, value in
-                datePicker.date = value
-            }
-        )
-    }
+     /// Reactive wrapper for `date` property.
+     public var value: ControlProperty<Date> {
+         return base.rx.controlPropertyWithDefaultEvents(
+             getter: { datePicker in
+                 datePicker.date
+             }, setter: { datePicker, value in
+                 datePicker.date = value
+             }
+         )
+     }
 
-    /// Reactive wrapper for `countDownDuration` property.
-    public var countDownDuration: ControlProperty<TimeInterval> {
-        return base.rx.controlPropertyWithDefaultEvents(
-            getter: { datePicker in
-                datePicker.countDownDuration
-            }, setter: { datePicker, value in
-                datePicker.countDownDuration = value
-            }
-        )
-    }
-}
-*/
+     /// Reactive wrapper for `countDownDuration` property.
+     public var countDownDuration: ControlProperty<TimeInterval> {
+         return base.rx.controlPropertyWithDefaultEvents(
+             getter: { datePicker in
+                 datePicker.countDownDuration
+             }, setter: { datePicker, value in
+                 datePicker.countDownDuration = value
+             }
+         )
+     }
+ }
+ */

@@ -15,13 +15,14 @@ internal enum SubscriptionStatus {
 }
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-extension Subscribers {
-    public final class ResumableAssign<Root, Input>: Subscriber,
+public extension Subscribers {
+    final class ResumableAssign<Root, Input>: Subscriber,
         Cancellable,
         ResumableProtocol,
         CustomStringConvertible,
         CustomReflectable,
-        CustomPlaygroundDisplayConvertible {
+        CustomPlaygroundDisplayConvertible
+    {
         // NOTE: this class has been audited for thread safety.
         // Combine doesn't use any locking here.
 
@@ -126,7 +127,8 @@ public extension ResumableCombine where Base: Publisher, Base.Failure == Never {
     ///   the subscription stream.
     func assign<Root>(to keyPath: ReferenceWritableKeyPath<Root, Output>,
                       on object: Root,
-                      mode: ResumableAssignMode = .singleDemandAllTheTime) -> AnyResumable {
+                      mode: ResumableAssignMode = .singleDemandAllTheTime) -> AnyResumable
+    {
         let subscriber = Subscribers.ResumableAssign(object: object, keyPath: keyPath, mode: mode)
         base.subscribe(subscriber)
         return subscriber
