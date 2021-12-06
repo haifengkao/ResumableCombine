@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ResumableCombine'
-  s.version          = '0.14.0'
+  s.version          = '0.15.0'
   s.summary          = 'Handle backpressure in Swift Combine gracefully'
 
 # This description is used to generate tags and improve search results.

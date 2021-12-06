@@ -1,7 +1,7 @@
 PODS:
   - Nimble (9.2.1)
   - Quick (4.0.0)
-  - ResumableCombine (0.14.0)
+  - ResumableCombine (0.15.0)
 
 DEPENDENCIES:
   - Nimble (~> 9.0)
@@ -12,10 +12,12 @@ EXTERNAL SOURCES:
   ResumableCombine:
     :path: "../"
 
+CHECKOUT OPTIONS: 
+
 SPEC CHECKSUMS:
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
   Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
-  ResumableCombine: c44de13f9ae19cd633e102be1e2834c291dde589
+  ResumableCombine: 90080b2bf449355e24337cb6d9d0b54f6611c3ca
 
 COCOAPODS: 1.11.2
 
