@@ -1,6 +1,6 @@
 //
 //  TestingThreadSafety.swift
-//  
+//
 //
 //  Created by Sergej Jaskiewicz on 11.06.2019.
 //
@@ -9,7 +9,7 @@ import Dispatch
 
 func race(times: Int = 100, _ bodies: () -> Void...) {
     DispatchQueue.concurrentPerform(iterations: bodies.count) {
-        for _ in 0..<times {
+        for _ in 0 ..< times {
             bodies[$0]()
         }
     }

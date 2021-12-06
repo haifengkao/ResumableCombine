@@ -1,6 +1,6 @@
 //
 //  TestLifecycle.swift
-//  
+//
 //
 //  Created by Sergej Jaskiewicz on 08.10.2019.
 //
@@ -8,9 +8,9 @@
 import XCTest
 
 #if OPENCOMBINE_COMPATIBILITY_TEST
-import Combine
+    import Combine
 #else
-import Combine
+    import Combine
 #endif
 
 @available(macOS 10.15, iOS 13.0, *)

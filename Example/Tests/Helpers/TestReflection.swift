@@ -1,6 +1,6 @@
 //
 //  TestReflection.swift
-//  
+//
 //
 //  Created by Sergej Jaskiewicz on 21/09/2019.
 //
@@ -8,9 +8,9 @@
 import XCTest
 
 #if OPENCOMBINE_COMPATIBILITY_TEST
-import Combine
+    import Combine
 #else
-import Combine
+    import Combine
 #endif
 
 let childrenIsEmpty: (Mirror) -> Bool = { $0.children.isEmpty }
@@ -30,7 +30,8 @@ enum ExpectedMirrorChildValue: ExpressibleByStringLiteral {
 @discardableResult
 func expectedChildren(_ expectedChildren: (String?, ExpectedMirrorChildValue)...,
                       file: StaticString = #file,
-                      line: UInt = #line) -> (Mirror) -> Bool {
+                      line: UInt = #line) -> (Mirror) -> Bool
+{
     return { mirror in
 
         let actualChildren = mirror
@@ -63,7 +64,8 @@ func expectedChildren(_ expectedChildren: (String?, ExpectedMirrorChildValue)...
 }
 
 func reduceLikeOperatorMirror(file: StaticString = #file,
-                              line: UInt = #line) -> (Mirror) -> Bool {
+                              line: UInt = #line) -> (Mirror) -> Bool
+{
     return expectedChildren(
         ("downstream", .contains("TrackingSubscriberBase")),
         ("result", .anything),
@@ -78,8 +80,8 @@ func reduceLikeOperatorMirror(file: StaticString = #file,
 internal func testReflection<Output, Failure: Error, Operator: Publisher>(
     file: StaticString = #file,
     line: UInt = #line,
-    parentInput: Output.Type,
-    parentFailure: Failure.Type,
+    parentInput _: Output.Type,
+    parentFailure _: Failure.Type,
     description expectedDescription: String?,
     customMirror customMirrorPredicate: ((Mirror) -> Bool)?,
     playgroundDescription: String?,
@@ -119,8 +121,8 @@ internal func testReflection<Output, Failure: Error, Operator: Publisher>(
                    line: line)
 
     XCTAssertEqual(
-        ((erasedSubscriber as? CustomPlaygroundDisplayConvertible)?
-            .playgroundDescription as? String),
+        (erasedSubscriber as? CustomPlaygroundDisplayConvertible)?
+            .playgroundDescription as? String,
         playgroundDescription,
         file: file,
         line: line
@@ -155,8 +157,8 @@ internal func testReflection<Output, Failure: Error, Operator: Publisher>(
                        line: line)
 
         XCTAssertEqual(
-            ((subscription as? CustomPlaygroundDisplayConvertible)?
-                .playgroundDescription as? String),
+            (subscription as? CustomPlaygroundDisplayConvertible)?
+                .playgroundDescription as? String,
             playgroundDescription,
             file: file,
             line: line
@@ -185,10 +187,10 @@ internal func testSubscriptionReflection<Sut: Publisher>(
 
     if let customMirrorPredicate = customMirrorPredicate {
         let customMirror =
-        try XCTUnwrap((subscription as? CustomReflectable)?.customMirror,
-                      "Subscription doesn't conform to CustomReflectable",
-                      file: file,
-                      line: line)
+            try XCTUnwrap((subscription as? CustomReflectable)?.customMirror,
+                          "Subscription doesn't conform to CustomReflectable",
+                          file: file,
+                          line: line)
         XCTAssert(customMirrorPredicate(customMirror),
                   file: file,
                   line: line)
@@ -205,8 +207,8 @@ internal func testSubscriptionReflection<Sut: Publisher>(
                    line: line)
 
     XCTAssertEqual(
-        ((subscription as? CustomPlaygroundDisplayConvertible)?
-            .playgroundDescription as? String),
+        (subscription as? CustomPlaygroundDisplayConvertible)?
+            .playgroundDescription as? String,
         playgroundDescription,
         file: file,
         line: line
@@ -223,13 +225,13 @@ If macOS 10.16/11.0 has already been released, this property should be removed
 If iOS 14  has already been released, this property should be removed
 """)
 var hasCustomMirrorUseAfterFreeBug: Bool { // swiftlint:disable:this let_var_whitespace
-#if OPENCOMBINE_COMPATIBILITY_TEST
-    if #available(macOS 10.16, iOS 14.0, *) {
+    #if OPENCOMBINE_COMPATIBILITY_TEST
+        if #available(macOS 10.16, iOS 14.0, *) {
+            return false
+        } else {
+            return true
+        }
+    #else
         return false
-    } else {
-        return true
-    }
-#else
-    return false
-#endif
+    #endif
 }

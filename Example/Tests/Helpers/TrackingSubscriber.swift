@@ -1,6 +1,6 @@
 //
 //  TrackingSubscriber.swift
-//  
+//
 //
 //  Created by Sergej Jaskiewicz on 11.06.2019.
 //
@@ -9,9 +9,9 @@ import Foundation
 import XCTest
 
 #if OPENCOMBINE_COMPATIBILITY_TEST
-import Combine
+    import Combine
 #else
-import Combine
+    import Combine
 #endif
 
 /// `TrackingSubscriber` records every event like "receiveSubscription",
@@ -40,12 +40,11 @@ typealias TrackingSubscriber = TrackingSubscriberBase<Int, TestingError>
 /// is considered equal to any other subscription no matter what the subscription object
 /// actually is.
 @available(macOS 10.15, iOS 13.0, *)
-final class TrackingSubscriberBase<Value, Failure: Error>
-    : Subscriber,
-      Cancellable,
-      CustomStringConvertible
+final class TrackingSubscriberBase<Value, Failure: Error>:
+    Subscriber,
+    Cancellable,
+    CustomStringConvertible
 {
-
     enum Event: CustomStringConvertible {
         case subscription(StringSubscription)
         case value(Value)
@@ -53,13 +52,13 @@ final class TrackingSubscriberBase<Value, Failure: Error>
 
         var description: String {
             switch self {
-            case .subscription(let subscription):
+            case let .subscription(subscription):
                 return ".subscription(\"\(subscription)\")"
-            case .value(let value):
+            case let .value(value):
                 return ".value(\(value))"
             case .completion(.finished):
                 return ".completion(.finished)"
-            case .completion(.failure(let error)):
+            case let .completion(.failure(error)):
                 return ".completion(.failure(\(error)))"
             }
         }
@@ -85,7 +84,7 @@ final class TrackingSubscriberBase<Value, Failure: Error>
         StringSubscription
     > {
         return history.lazy.compactMap {
-            if case .subscription(let s) = $0 {
+            if case let .subscription(s) = $0 {
                 return s
             } else {
                 return nil
@@ -98,7 +97,7 @@ final class TrackingSubscriberBase<Value, Failure: Error>
         LazyFilterSequence<LazyMapSequence<[Event], Value?>>, Value
     > {
         return history.lazy.compactMap {
-            if case .value(let v) = $0 {
+            if case let .value(v) = $0 {
                 return v
             } else {
                 return nil
@@ -114,7 +113,7 @@ final class TrackingSubscriberBase<Value, Failure: Error>
         Subscribers.Completion<Failure>
     > {
         return history.lazy.compactMap {
-            if case .completion(let c) = $0 {
+            if case let .completion(c) = $0 {
                 return c
             } else {
                 return nil
@@ -125,7 +124,8 @@ final class TrackingSubscriberBase<Value, Failure: Error>
     init(receiveSubscription: ((Subscription) -> Void)? = nil,
          receiveValue: ((Input) -> Subscribers.Demand)? = nil,
          receiveCompletion: ((Subscribers.Completion<Failure>) -> Void)? = nil,
-         onDeinit: (() -> Void)? = nil) {
+         onDeinit: (() -> Void)? = nil)
+    {
         _receiveSubscription = receiveSubscription
         _receiveValue = receiveValue
         _receiveCompletion = receiveCompletion
@@ -147,7 +147,7 @@ final class TrackingSubscriberBase<Value, Failure: Error>
     func receive(completion: Subscribers.Completion<Failure>) {
         history.append(.completion(completion))
         switch completion {
-        case .failure(let error):
+        case let .failure(error):
             onFailure?(error)
         case .finished:
             onFinish?()
@@ -162,11 +162,11 @@ final class TrackingSubscriberBase<Value, Failure: Error>
     func assertHistoryEqual(_ expected: [Event],
                             valueComparator: (Value, Value) -> Bool,
                             file: StaticString = #file,
-                            line: UInt = #line) {
-
+                            line: UInt = #line)
+    {
         let equals = history.count == expected.count &&
             zip(history, expected)
-                .allSatisfy { $0.isEqual(to: $1, valueComparator: valueComparator) }
+            .allSatisfy { $0.isEqual(to: $1, valueComparator: valueComparator) }
 
         XCTAssert(equals,
                   "\(history) is not equal to \(expected)",
@@ -195,7 +195,8 @@ final class TrackingSubscriberBase<Value, Failure: Error>
 extension TrackingSubscriberBase where Value: Equatable {
     func assertHistoryEqual(_ expected: [Event],
                             file: StaticString = #file,
-                            line: UInt = #line) {
+                            line: UInt = #line)
+    {
         assertHistoryEqual(expected, valueComparator: ==, file: file, line: line)
     }
 }
@@ -204,7 +205,8 @@ extension TrackingSubscriberBase where Value: Equatable {
 extension TrackingSubscriberBase where Value == Void {
     func assertHistoryEqual(_ expected: [Event],
                             file: StaticString = #file,
-                            line: UInt = #line) {
+                            line: UInt = #line)
+    {
         assertHistoryEqual(expected,
                            valueComparator: { _, _ in true },
                            file: file,
@@ -215,7 +217,8 @@ extension TrackingSubscriberBase where Value == Void {
 @available(macOS 10.15, iOS 13.0, *)
 extension TrackingSubscriberBase.Event {
     func isEqual(to other: TrackingSubscriberBase<Value, Failure>.Event,
-                 valueComparator: (Value, Value) -> Bool) -> Bool {
+                 valueComparator: (Value, Value) -> Bool) -> Bool
+    {
         switch (self, other) {
         case let (.subscription(lhs), .subscription(rhs)):
             return lhs == rhs
@@ -238,20 +241,20 @@ extension TrackingSubscriberBase.Event {
 
 @available(macOS 10.15, iOS 13.0, *)
 extension TrackingSubscriberBase.Event: Equatable where Value: Equatable {
-
     static func == (lhs: TrackingSubscriberBase.Event,
-                    rhs: TrackingSubscriberBase.Event) -> Bool {
+                    rhs: TrackingSubscriberBase.Event) -> Bool
+    {
         return lhs.isEqual(to: rhs, valueComparator: ==)
     }
 }
 
 @available(macOS 10.15, iOS 13.0, *)
 extension TrackingSubscriberBase.Event where Value == Void {
-
     static var signal: TrackingSubscriberBase.Event { return .value(()) }
 
     static func == (lhs: TrackingSubscriberBase.Event,
-                    rhs: TrackingSubscriberBase.Event) -> Bool {
+                    rhs: TrackingSubscriberBase.Event) -> Bool
+    {
         return lhs.isEqual(to: rhs, valueComparator: { _, _ in true })
     }
 }
@@ -260,9 +263,9 @@ extension TrackingSubscriberBase.Event where Value == Void {
 typealias TrackingSubject<Output: Equatable> = TrackingSubjectBase<Output, TestingError>
 
 @available(macOS 10.15, iOS 13.0, *)
-final class TrackingSubjectBase<Output: Equatable, Failure: Error>
-    : Subject,
-      CustomStringConvertible
+final class TrackingSubjectBase<Output: Equatable, Failure: Error>:
+    Subject,
+    CustomStringConvertible
 {
     enum Event: Equatable, CustomStringConvertible {
         case subscriber
@@ -297,13 +300,13 @@ final class TrackingSubjectBase<Output: Equatable, Failure: Error>
             switch self {
             case .subscriber:
                 return ".subscriber"
-            case .subscription(let description):
+            case let .subscription(description):
                 return ".subscription(\"\(description)\")"
-            case .value(let value):
+            case let .value(value):
                 return ".value(\(value))"
             case .completion(.finished):
                 return ".completion(.finished)"
-            case .completion(.failure(let error)):
+            case let .completion(.failure(error)):
                 return ".completion(.failure(\(error))"
             }
         }
@@ -315,7 +318,8 @@ final class TrackingSubjectBase<Output: Equatable, Failure: Error>
     private let _onDeinit: (() -> Void)?
 
     init(receiveSubscriber: ((AnySubscriber<Output, Failure>) -> Void)? = nil,
-         onDeinit: (() -> Void)? = nil) {
+         onDeinit: (() -> Void)? = nil)
+    {
         _receiveSubscriber = receiveSubscriber
         _onDeinit = onDeinit
     }
@@ -352,9 +356,9 @@ final class TrackingSubjectBase<Output: Equatable, Failure: Error>
 
 @available(macOS 10.15, iOS 13.0, *)
 enum StringSubscription: Subscription,
-                         CustomStringConvertible,
-                         ExpressibleByStringLiteral {
-
+    CustomStringConvertible,
+    ExpressibleByStringLiteral
+{
     case string(String)
     case subscription(Subscription)
 
@@ -368,9 +372,9 @@ enum StringSubscription: Subscription,
 
     var description: String {
         switch self {
-        case .string(let string):
+        case let .string(string):
             return string
-        case .subscription(let subscription):
+        case let .subscription(subscription):
             return String(describing: subscription)
         }
     }
@@ -381,7 +385,7 @@ enum StringSubscription: Subscription,
 
     var combineIdentifier: CombineIdentifier {
         switch self {
-        case .subscription(let subscription):
+        case let .subscription(subscription):
             return subscription.combineIdentifier
         case .string:
             fatalError("String has no combineIdentifier")
@@ -396,7 +400,7 @@ enum StringSubscription: Subscription,
         switch self {
         case .string:
             return nil
-        case .subscription(let underlying):
+        case let .subscription(underlying):
             return underlying
         }
     }
