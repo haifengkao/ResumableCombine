@@ -9,7 +9,7 @@ target 'ResumableCombine_Example' do
   target 'ResumableCombine_Tests' do
     inherit! :search_paths
 
-    pod 'Quick', '~> 2.0'
-    pod 'Nimble', '~> 8.0'
+    pod 'Quick', '~> 4.0'
+    pod 'Nimble', '~> 9.0'
   end
 end
