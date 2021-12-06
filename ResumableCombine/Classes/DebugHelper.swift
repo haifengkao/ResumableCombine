@@ -8,14 +8,14 @@
 
 import Combine
 
-extension ResumableCombine where Base: Publisher {
+public extension ResumableCombine where Base: Publisher {
     /// assert when the downstream request a demand which is too large.
     /// useful to detect if any downstream request an unlimited demand
     /// - Parameters:
     ///   - maxDemand: the max demand allowed
     ///   - message: the assert message
     /// - Returns: HandleEvents publisher
-    public func assert(maxDemand: Subscribers.Demand, _ message: String = "", file: StaticString = #file, line: UInt = #line) -> Publishers.HandleEvents<Base> {
+    func assert(maxDemand: Subscribers.Demand, _ message: String = "", file: StaticString = #file, line: UInt = #line) -> Publishers.HandleEvents<Base> {
         return base.handleEvents(receiveRequest: { demand in
             Swift.assert(demand <= maxDemand, message, file: file, line: line)
         })
@@ -27,7 +27,7 @@ extension ResumableCombine where Base: Publisher {
     ///   - accumulatedDemand: the total accumulated demand allowed
     ///   - message: the assert message
     /// - Returns: HandleEvents publisher
-    public func assert(accumulatedDemand: Subscribers.Demand, _ message: String = "", file: StaticString = #file, line: UInt = #line) -> Publishers.HandleEvents<Base> {
+    func assert(accumulatedDemand: Subscribers.Demand, _ message: String = "", file: StaticString = #file, line: UInt = #line) -> Publishers.HandleEvents<Base> {
         var currentDemand: Subscribers.Demand = .max(0)
         return base.handleEvents(receiveRequest: { demand in
 
@@ -42,13 +42,14 @@ extension ResumableCombine where Base: Publisher {
     ///   - minInterval: the minimum time interval allowed to send new demands
     ///   - message: the assert message
     /// - Returns: HandleEvents publisher
-    public func assert(minInterval: DispatchTimeInterval, _ message: String = "", file: StaticString = #file, line: UInt = #line) -> Publishers.HandleEvents<Base> {
+    func assert(minInterval: DispatchTimeInterval, _ message: String = "", file: StaticString = #file, line: UInt = #line) -> Publishers.HandleEvents<Base> {
         var lastDemandDate: Date?
 
         return base.handleEvents(receiveRequest: { _ in
             let currentDate = Date()
             if let lastDate = lastDemandDate,
-               lastDate.addingDispatchInterval(minInterval) > currentDate {
+               lastDate.addingDispatchInterval(minInterval) > currentDate
+            {
                 Swift.assertionFailure(message, file: file, line: line)
             } else {
                 lastDemandDate = currentDate
@@ -57,21 +58,21 @@ extension ResumableCombine where Base: Publisher {
     }
 
     /// convinence method to ensure the publisher will receive the demands slowly
-    public func assertSingleAndSlow(maxDemand: Subscribers.Demand = .max(1), minInterval: DispatchTimeInterval = .milliseconds(10), _ message: String = "", file: StaticString = #file, line: UInt = #line) -> Publishers.HandleEvents<Publishers.HandleEvents<Base>> {
-        return self.assert(maxDemand: maxDemand).rm.assert(minInterval: minInterval, file: file, line: line)
+    func assertSingleAndSlow(maxDemand: Subscribers.Demand = .max(1), minInterval: DispatchTimeInterval = .milliseconds(10), _: String = "", file: StaticString = #file, line: UInt = #line) -> Publishers.HandleEvents<Publishers.HandleEvents<Base>> {
+        return assert(maxDemand: maxDemand).rm.assert(minInterval: minInterval, file: file, line: line)
     }
 }
 
+import enum Dispatch.DispatchTimeInterval
 import struct Foundation.Date
 import struct Foundation.TimeInterval
-import enum Dispatch.DispatchTimeInterval
 
 extension DispatchTimeInterval {
     var convertToSecondsFactor: Double {
         switch self {
         case .nanoseconds: return 1_000_000_000.0
         case .microseconds: return 1_000_000.0
-        case .milliseconds: return 1_000.0
+        case .milliseconds: return 1000.0
         case .seconds: return 1.0
         case .never: fatalError()
         @unknown default: fatalError()
@@ -80,10 +81,9 @@ extension DispatchTimeInterval {
 }
 
 extension Date {
-
-    internal func addingDispatchInterval(_ dispatchInterval: DispatchTimeInterval) -> Date {
+    func addingDispatchInterval(_ dispatchInterval: DispatchTimeInterval) -> Date {
         switch dispatchInterval {
-        case .nanoseconds(let value), .microseconds(let value), .milliseconds(let value), .seconds(let value):
+        case let .nanoseconds(value), let .microseconds(value), let .milliseconds(value), let .seconds(value):
             return self.addingTimeInterval(TimeInterval(value) / dispatchInterval.convertToSecondsFactor)
         case .never: return Date.distantFuture
         @unknown default: fatalError()

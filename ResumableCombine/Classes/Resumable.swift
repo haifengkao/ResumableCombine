@@ -8,7 +8,6 @@
 
 import Combine
 
-
 public typealias AnyResumable = Cancellable & ResumableProtocol
 /**
  Use `Reactive` proxy as customization point for constrained protocol extensions.
@@ -42,9 +41,9 @@ public protocol ResumableProtocol {
     func resume()
 }
 
-extension Publisher {
+public extension Publisher {
     /// Reactive extensions.
-    public static var rm: ResumableCombine<Self>.Type {
+    static var rm: ResumableCombine<Self>.Type {
         get {
             return ResumableCombine<Self>.self
         }
@@ -55,7 +54,7 @@ extension Publisher {
     }
 
     /// Reactive extensions.
-    public var rm: ResumableCombine<Self> {
+    var rm: ResumableCombine<Self> {
         get {
             return ResumableCombine(self)
         }

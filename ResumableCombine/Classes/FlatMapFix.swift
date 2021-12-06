@@ -6,7 +6,6 @@
 
 import Combine
 public extension ResumableCombine where Base: Publisher {
-
     /// Transforms all elements from an upstream publisher into a new or existing
     /// publisher.
     ///
@@ -23,16 +22,18 @@ public extension ResumableCombine where Base: Publisher {
         maxPublishers: Subscribers.Demand = .unlimited,
         _ transform: @escaping (Output) -> Child
     ) -> Publishers.FlatMapFix<Child, Base>
-        where Result == Child.Output, Failure == Child.Failure {
+        where Result == Child.Output, Failure == Child.Failure
+    {
         return .init(upstream: base,
                      maxPublishers: maxPublishers,
                      transform: transform)
     }
 }
 
-extension Publishers {
-    public struct FlatMapFix<Child: Publisher, Upstream: Publisher>: Publisher
-        where Child.Failure == Upstream.Failure {
+public extension Publishers {
+    struct FlatMapFix<Child: Publisher, Upstream: Publisher>: Publisher
+        where Child.Failure == Upstream.Failure
+    {
         public typealias Output = Child.Output
 
         public typealias Failure = Upstream.Failure
@@ -44,14 +45,16 @@ extension Publishers {
         public let transform: (Upstream.Output) -> Child
 
         public init(upstream: Upstream, maxPublishers: Subscribers.Demand,
-                    transform: @escaping (Upstream.Output) -> Child) {
+                    transform: @escaping (Upstream.Output) -> Child)
+        {
             self.upstream = upstream
             self.maxPublishers = maxPublishers
             self.transform = transform
         }
 
         public func receive<Downstream: Subscriber>(subscriber: Downstream)
-            where Child.Output == Downstream.Input, Upstream.Failure == Downstream.Failure {
+            where Child.Output == Downstream.Input, Upstream.Failure == Downstream.Failure
+        {
             let inner = Inner(downstream: subscriber,
                               maxPublishers: maxPublishers,
                               map: transform)
@@ -68,7 +71,8 @@ extension Publishers.FlatMapFix {
         CustomStringConvertible,
         CustomReflectable,
         CustomPlaygroundDisplayConvertible
-        where Downstream.Input == Child.Output, Downstream.Failure == Upstream.Failure {
+        where Downstream.Input == Child.Output, Downstream.Failure == Upstream.Failure
+    {
         typealias Input = Upstream.Output
         typealias Failure = Upstream.Failure
 
@@ -111,7 +115,8 @@ extension Publishers.FlatMapFix {
 
         init(downstream: Downstream,
              maxPublishers: Subscribers.Demand,
-             map: @escaping (Upstream.Output) -> Child) {
+             map: @escaping (Upstream.Output) -> Child)
+        {
             self.downstream = downstream
             self.maxPublishers = maxPublishers
             self.map = map
@@ -279,7 +284,8 @@ extension Publishers.FlatMapFix {
         // MARK: - Private
 
         private func receiveInner(subscription: Subscription,
-                                  _ index: SubscriptionIndex) {
+                                  _ index: SubscriptionIndex)
+        {
             lock.lock()
             pendingSubscriptions -= 1
             subscriptions[index] = subscription
@@ -293,7 +299,8 @@ extension Publishers.FlatMapFix {
         }
 
         private func receiveInner(_ input: Child.Output,
-                                  _ index: SubscriptionIndex) -> Subscribers.Demand {
+                                  _ index: SubscriptionIndex) -> Subscribers.Demand
+        {
             lock.lock()
             if downstreamDemand == .unlimited {
                 lock.unlock()
@@ -325,7 +332,8 @@ extension Publishers.FlatMapFix {
         }
 
         private func receiveInner(completion: Subscribers.Completion<Child.Failure>,
-                                  _ index: SubscriptionIndex) {
+                                  _ index: SubscriptionIndex)
+        {
             switch completion {
             case .finished:
                 lock.lock()
@@ -375,7 +383,8 @@ extension Publishers.FlatMapFix {
                 lock.assertOwner() // Sanity check
             #endif
             if !cancelledOrCompleted, outerFinished, buffer.isEmpty,
-                subscriptions.count + pendingSubscriptions == 0 {
+               subscriptions.count + pendingSubscriptions == 0
+            {
                 cancelledOrCompleted = true
                 lock.unlock()
                 downstreamLock.lock()
@@ -393,7 +402,8 @@ extension Publishers.FlatMapFix {
         private struct Side: Subscriber,
             CustomStringConvertible,
             CustomReflectable,
-            CustomPlaygroundDisplayConvertible {
+            CustomPlaygroundDisplayConvertible
+        {
             private let index: SubscriptionIndex
             private let inner: Inner
             fileprivate let combineIdentifier = CombineIdentifier()
@@ -429,10 +439,10 @@ extension Publishers.FlatMapFix {
     }
 }
 
-
 extension Subscribers.Demand {
-    internal func assertNonZero(file: StaticString = #file,
-                                line: UInt = #line) {
+    func assertNonZero(file: StaticString = #file,
+                       line: UInt = #line)
+    {
         if self == .none {
             fatalError("API Violation: demand must not be zero", file: file, line: line)
         }
