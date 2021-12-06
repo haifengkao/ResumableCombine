@@ -1,14 +1,14 @@
 //
 //  CustomPublisher.swift
-//  
+//
 //
 //  Created by Sergej Jaskiewicz on 16.06.2019.
 //
 
 #if OPENCOMBINE_COMPATIBILITY_TEST
-import Combine
+    import Combine
 #else
-import Combine
+    import Combine
 #endif
 
 /// `CustomPublisher` sends the `subscription` object it has been initialized with
@@ -35,7 +35,6 @@ typealias CustomPublisher = CustomPublisherBase<Int, TestingError>
 
 @available(macOS 10.15, iOS 13.0, *)
 class CustomPublisherBase<Output, Failure: Error>: Publisher, Cancellable {
-
     private(set) var subscriber: AnySubscriber<Output, Failure>?
     private(set) var erasedSubscriber: Any?
     private let subscription: Subscription?
@@ -87,11 +86,10 @@ class CustomPublisherBase<Output, Failure: Error>: Publisher, Cancellable {
 typealias CustomConnectablePublisher = CustomConnectablePublisherBase<Int, TestingError>
 
 @available(macOS 10.15, iOS 13.0, *)
-final class CustomConnectablePublisherBase<Output, Failure: Error>
-    : CustomPublisherBase<Output, Failure>,
-      ConnectablePublisher
+final class CustomConnectablePublisherBase<Output, Failure: Error>:
+    CustomPublisherBase<Output, Failure>,
+    ConnectablePublisher
 {
-
     enum Event: CustomStringConvertible {
         case connected, disconnected
 
@@ -106,7 +104,6 @@ final class CustomConnectablePublisherBase<Output, Failure: Error>
     }
 
     struct Connection: Cancellable {
-
         let onCancel: () -> Void
 
         func cancel() {

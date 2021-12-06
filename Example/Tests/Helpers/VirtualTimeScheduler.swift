@@ -6,14 +6,13 @@
 //
 
 #if OPENCOMBINE_COMPATIBILITY_TEST
-import Combine
+    import Combine
 #else
-import Combine
+    import Combine
 #endif
 
 @available(macOS 10.15, iOS 13.0, *)
 protocol CancellableTokenProtocol: Cancellable {
-
     init(_ scheduler: VirtualTimeScheduler)
 
     var isCancelled: Bool { get }
@@ -21,17 +20,15 @@ protocol CancellableTokenProtocol: Cancellable {
 
 @available(macOS 10.15, iOS 13.0, *)
 final class VirtualTimeScheduler: Scheduler {
-
     struct SchedulerTimeType: Strideable,
-                              Comparable,
-                              Hashable,
-                              SchedulerTimeIntervalConvertible
+        Comparable,
+        Hashable,
+        SchedulerTimeIntervalConvertible
     {
-
         struct Stride: ExpressibleByFloatLiteral,
-                       Comparable,
-                       SignedNumeric,
-                       SchedulerTimeIntervalConvertible
+            Comparable,
+            SignedNumeric,
+            SchedulerTimeIntervalConvertible
         {
             var magnitude: Int64
 
@@ -95,7 +92,7 @@ final class VirtualTimeScheduler: Scheduler {
             }
 
             static func microseconds(_ value: Int) -> Stride {
-                return Stride(magnitude: Int64(value) * 1_000)
+                return Stride(magnitude: Int64(value) * 1000)
             }
 
             static func nanoseconds(_ value: Int) -> Stride {
@@ -159,7 +156,7 @@ final class VirtualTimeScheduler: Scheduler {
 
         static func microseconds(_ value: Int) -> SchedulerTimeType {
             precondition(value >= 0, "value must not be negative")
-            return .init(nanoseconds: UInt64(value) * 1_000)
+            return .init(nanoseconds: UInt64(value) * 1000)
         }
 
         static func nanoseconds(_ value: Int) -> SchedulerTimeType {
@@ -180,7 +177,6 @@ final class VirtualTimeScheduler: Scheduler {
     }
 
     final class CancellableToken: CancellableTokenProtocol {
-
         weak var scheduler: VirtualTimeScheduler?
 
         private(set) var isCancelled = false
@@ -199,7 +195,6 @@ final class VirtualTimeScheduler: Scheduler {
     }
 
     final class NoopCancellableToken: CancellableTokenProtocol {
-
         weak var scheduler: VirtualTimeScheduler?
 
         init(_ scheduler: VirtualTimeScheduler) {
@@ -228,7 +223,6 @@ final class VirtualTimeScheduler: Scheduler {
                                            options: SchedulerOptions?)
 
         var description: String {
-
             func describeOptions(_ options: SchedulerOptions?) -> String {
                 return options.map(String.init(describing:)) ?? "nil"
             }
@@ -304,7 +298,8 @@ final class VirtualTimeScheduler: Scheduler {
     func schedule(after date: SchedulerTimeType,
                   tolerance: SchedulerTimeType.Stride,
                   options: SchedulerOptions?,
-                  _ action: @escaping () -> Void) {
+                  _ action: @escaping () -> Void)
+    {
         history.append(.scheduleAfterDate(date, tolerance: tolerance, options: options))
         workQueue.insert(action, priority: date)
     }
@@ -313,7 +308,8 @@ final class VirtualTimeScheduler: Scheduler {
                   interval: SchedulerTimeType.Stride,
                   tolerance: SchedulerTimeType.Stride,
                   options: SchedulerOptions?,
-                  _ action: @escaping () -> Void) -> Cancellable {
+                  _ action: @escaping () -> Void) -> Cancellable
+    {
         history.append(.scheduleAfterDateWithInterval(date,
                                                       interval: interval,
                                                       tolerance: tolerance,
@@ -329,7 +325,8 @@ final class VirtualTimeScheduler: Scheduler {
     private func repeatedlyExecute(after date: SchedulerTimeType,
                                    interval: SchedulerTimeType.Stride,
                                    cancellableToken: CancellableTokenProtocol,
-                                   action: @escaping () -> Void) {
+                                   action: @escaping () -> Void)
+    {
         let enqueuedAction: () -> Void = { [unowned self] in
             if cancellableToken.isCancelled { return }
             action()

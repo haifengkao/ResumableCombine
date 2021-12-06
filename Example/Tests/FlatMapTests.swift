@@ -4,15 +4,14 @@
 //  Created by Eric Patey on 17.08.2019.
 //
 
-import XCTest
 import Combine
+import XCTest
 
 private typealias ResultPublisher<Output, Failure: Error> =
     Result<Output, Failure>.Publisher
 
 @available(macOS 10.15, iOS 13.0, *)
 final class FlatMapTests: XCTestCase {
-
     func testFlatMapSequencesWithSink() {
         var history = [Int]()
         let cancellable = Publishers.Sequence<Range<Int>, Never>(sequence: 1 ..< 5)
@@ -86,7 +85,8 @@ final class FlatMapTests: XCTestCase {
     func testSendsChildValues() {
         let upstreamPublisher = PassthroughSubject<
             PassthroughSubject<Int, TestingError>,
-            TestingError>()
+            TestingError
+        >()
         let childPublisher1 = PassthroughSubject<Int, TestingError>()
         let childPublisher2 = PassthroughSubject<Int, TestingError>()
 
@@ -184,7 +184,8 @@ final class FlatMapTests: XCTestCase {
             publisherType: CustomPublisherBase<CustomPublisher, TestingError>.self,
             initialDemand: .max(10),
             receiveValueDemand: .max(3),
-            createSut: { $0.rm.flatMap { $0 } })
+            createSut: { $0.rm.flatMap { $0 } }
+        )
 
         let childSubscription = CustomSubscription()
         XCTAssertEqual(
@@ -273,8 +274,7 @@ final class FlatMapTests: XCTestCase {
 
         let flatMap = upstreamPublisher.rm.flatMap { _ in childPublisher }
 
-        let downstreamSubscriber = TrackingSubscriberBase<Int, Never>(receiveSubscription:
-        {
+        let downstreamSubscriber = TrackingSubscriberBase<Int, Never>(receiveSubscription: {
             $0.request(.unlimited)
         })
 
@@ -305,8 +305,7 @@ final class FlatMapTests: XCTestCase {
         let flatMap = upstreamPublisher.rm.flatMap { $0 }
 
         var downstreamSubscription: Subscription?
-        let downstreamSubscriber = TrackingSubscriberBase<Int, Never>(receiveSubscription:
-        {
+        let downstreamSubscriber = TrackingSubscriberBase<Int, Never>(receiveSubscription: {
             downstreamSubscription = $0
             $0.request(.max(2))
         })
@@ -382,8 +381,7 @@ final class FlatMapTests: XCTestCase {
         let flatMap = upstreamPublisher.rm.flatMap { _ in childPublisher }
 
         var downstreamSubscription: Subscription?
-        let downstreamSubscriber = TrackingSubscriberBase<Int, Never>(receiveSubscription:
-        {
+        let downstreamSubscriber = TrackingSubscriberBase<Int, Never>(receiveSubscription: {
             downstreamSubscription = $0
             $0.request(.max(3))
         })
@@ -523,23 +521,23 @@ final class FlatMapTests: XCTestCase {
 
         // Better stay alive even after upstream and one child finished
         XCTAssertEqual(downstreamSubscriber.history, [.subscription("FlatMapFix"),
-                                          .value(666)])
+                                                      .value(666)])
 
         child2.send(777)
         child2.send(completion: .finished)
 
         // Better stay alive even after all children finished
         XCTAssertEqual(downstreamSubscriber.history, [.subscription("FlatMapFix"),
-                                          .value(666),
-                                          .value(777)])
+                                                      .value(666),
+                                                      .value(777)])
 
         upstreamPublisher.send(completion: .finished)
 
         // Better complete when upstream and all children finished
         XCTAssertEqual(downstreamSubscriber.history, [.subscription("FlatMapFix"),
-                                          .value(666),
-                                          .value(777),
-                                          .completion(.finished)])
+                                                      .value(666),
+                                                      .value(777),
+                                                      .completion(.finished)])
     }
 
     func testDownstreamFinishesWhenUpstreamAndChildFinishes() {
@@ -587,7 +585,7 @@ final class FlatMapTests: XCTestCase {
             createSut: { $0.rm.flatMap(maxPublishers: .max(1)) { $0 } }
         )
 
-        child.willSubscribe = { subscriber in
+        child.willSubscribe = { _ in
             helper.publisher.send(completion: .finished)
         }
 
@@ -651,8 +649,7 @@ final class FlatMapTests: XCTestCase {
         let flatMap = upstreamPublisher.rm.flatMap { _ in childPublisher }
 
         var downstreamSubscription: Subscription?
-        let downstreamSubscriber = TrackingSubscriberBase<Int, Never>(receiveSubscription:
-        {
+        let downstreamSubscriber = TrackingSubscriberBase<Int, Never>(receiveSubscription: {
             downstreamSubscription = $0
             $0.request(.max(1))
         })
@@ -697,7 +694,8 @@ final class FlatMapTests: XCTestCase {
                 """
                 Failure should be sent downstream after the child subscriptions were \
                 cancelled
-                """)
+                """
+            )
         }
 
         XCTAssertEqual(helper.publisher.send(child1), .none)
@@ -758,7 +756,8 @@ final class FlatMapTests: XCTestCase {
     func testFailsWithoutSendingBufferedValues() {
         let upstreamPublisher = PassthroughSubject<
             PassthroughSubject<Int, TestingError>,
-            TestingError>()
+            TestingError
+        >()
         let childPublisher = PassthroughSubject<Int, TestingError>()
 
         let flatMap = upstreamPublisher.rm.flatMap { $0 }
@@ -969,7 +968,8 @@ final class FlatMapTests: XCTestCase {
         var receiveOrder: [String] = []
 
         let upstreamSubscription = CustomSubscription(onRequest: { _ in
-            receiveOrder.append(sentDemandRequestUpstream) })
+            receiveOrder.append(sentDemandRequestUpstream)
+        })
         let upstreamPublisher = CustomPublisherBase<Int, Never>(
             subscription: upstreamSubscription)
         let flatMapPublisher = upstreamPublisher.rm.flatMap { Just($0) }
@@ -1046,8 +1046,7 @@ final class FlatMapTests: XCTestCase {
                            parentFailure: Never.self,
                            description: "FlatMapFix",
                            customMirror: childrenIsEmpty,
-                           playgroundDescription: "FlatMapFix",
-                           { $0.rm.flatMap { Just($0) } })
+                           playgroundDescription: "FlatMapFix") { $0.rm.flatMap { Just($0) } }
 
         let innerPublisher = CustomPublisher(subscription: CustomSubscription())
         let outerPublisher = CustomPublisher(subscription: CustomSubscription())
@@ -1077,8 +1076,8 @@ final class FlatMapTests: XCTestCase {
                        "subscriber shouldn't conform to CustomDebugStringConvertible")
 
         XCTAssertEqual(
-            ((innerSubscriber as? CustomPlaygroundDisplayConvertible)?
-                .playgroundDescription as? String),
+            (innerSubscriber as? CustomPlaygroundDisplayConvertible)?
+                .playgroundDescription as? String,
             "FlatMapFix"
         )
     }

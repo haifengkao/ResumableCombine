@@ -1,6 +1,6 @@
 //
 //  CommonTests.swift
-//  
+//
 //
 //  Created by Sergej Jaskiewicz on 25.10.2019.
 //
@@ -8,14 +8,13 @@
 import XCTest
 
 #if OPENCOMBINE_COMPATIBILITY_TEST
-import Combine
+    import Combine
 #else
-import Combine
+    import Combine
 #endif
 
 @available(macOS 10.15, iOS 13.0, *)
 extension XCTest {
-
     enum ValueBeforeSubscriptionBehavior<Value, Failure: Error> {
         case crash
         case history([TrackingSubscriberBase<Value, Failure>.Event],
@@ -59,11 +58,10 @@ extension XCTest {
     func testReceiveCompletionBeforeSubscription<Value, Operator: Publisher>(
         file: StaticString = #file,
         line: UInt = #line,
-        inputType: Value.Type,
+        inputType _: Value.Type,
         expected: CompletionBeforeSubscriptionBehavior<Operator.Output, Operator.Failure>,
         _ makeOperator: (CustomConnectablePublisherBase<Value, Never>) -> Operator
     ) {
-
         let publisher = CustomConnectablePublisherBase<Value, Never>(subscription: nil)
         let operatorPublisher = makeOperator(publisher)
         let tracking = TrackingSubscriberBase<Operator.Output, Operator.Failure>()
@@ -86,11 +84,10 @@ extension XCTest {
     func testRequestBeforeSubscription<Value, Operator: Publisher>(
         file: StaticString = #file,
         line: UInt = #line,
-        inputType: Value.Type,
+        inputType _: Value.Type,
         shouldCrash: Bool,
         _ makeOperator: (CustomConnectablePublisherBase<Value, Never>) -> Operator
     ) {
-
         let publisher = CustomConnectablePublisherBase<Value, Never>(subscription: nil)
         let operatorPublisher = makeOperator(publisher)
         let tracking = TrackingSubscriberBase<Operator.Output, Operator.Failure>()
@@ -113,11 +110,10 @@ extension XCTest {
     func testCancelBeforeSubscription<Value, Operator: Publisher>(
         file: StaticString = #file,
         line: UInt = #line,
-        inputType: Value.Type,
+        inputType _: Value.Type,
         shouldCrash: Bool,
         _ makeOperator: (CustomConnectablePublisherBase<Value, Never>) -> Operator
     ) {
-
         let publisher = CustomConnectablePublisherBase<Value, Never>(subscription: nil)
         let operatorPublisher = makeOperator(publisher)
         let tracking = TrackingSubscriberBase<Operator.Output, Operator.Failure>()

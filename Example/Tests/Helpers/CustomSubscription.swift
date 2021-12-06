@@ -1,14 +1,14 @@
 //
 //  CustomSubscription.swift
-//  
+//
 //
 //  Created by Sergej Jaskiewicz on 16.06.2019.
 //
 
 #if OPENCOMBINE_COMPATIBILITY_TEST
-import Combine
+    import Combine
 #else
-import Combine
+    import Combine
 #endif
 
 /// `CustomSubscription` tracks all the requests and cancellations
@@ -18,14 +18,13 @@ import Combine
 /// use the `CustomSubscriber` class.
 @available(macOS 10.15, iOS 13.0, *)
 final class CustomSubscription: Subscription, CustomStringConvertible {
-
     enum Event: Equatable, CustomStringConvertible {
         case requested(Subscribers.Demand)
         case cancelled
 
         var description: String {
             switch self {
-            case .requested(let demand):
+            case let .requested(demand):
                 return ".requested(.\(demand))"
             case .cancelled:
                 return ".cancelled"
@@ -42,7 +41,8 @@ final class CustomSubscription: Subscription, CustomStringConvertible {
 
     init(onRequest: ((Subscribers.Demand) -> Void)? = nil,
          onCancel: (() -> Void)? = nil,
-         onDeinit: (() -> Void)? = nil) {
+         onDeinit: (() -> Void)? = nil)
+    {
         self.onRequest = onRequest
         self.onCancel = onCancel
         self.onDeinit = onDeinit
@@ -55,7 +55,7 @@ final class CustomSubscription: Subscription, CustomStringConvertible {
     var lastRequested: Subscribers.Demand? {
         return history.lazy.compactMap {
             switch $0 {
-            case .requested(let demand):
+            case let .requested(demand):
                 return demand
             case .cancelled:
                 return nil

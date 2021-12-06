@@ -1,6 +1,6 @@
 //
 //  TrackingCollection.swift
-//  
+//
 //
 //  Created by Sergej Jaskiewicz on 04.07.2019.
 //
@@ -11,7 +11,6 @@ import Combine
 typealias DisposeBag = TrackingCollection<AnyCancellable>
 
 final class TrackingCollection<Element> {
-
     enum Event: String, CustomStringConvertible {
         // Sequence
         case makeIterator
@@ -74,7 +73,6 @@ extension TrackingCollection: Sequence {
 }
 
 extension TrackingCollection: Collection {
-
     var startIndex: Int {
         history.append(.startIndex)
         return storage.startIndex
@@ -137,7 +135,6 @@ extension TrackingCollection: Collection {
 }
 
 extension TrackingCollection: RangeReplaceableCollection {
-
     convenience init() {
         self.init(history: [.emptyInit], storage: [])
     }
@@ -221,8 +218,8 @@ extension TrackingCollection: RangeReplaceableCollection {
     }
 }
 
-final class TrackingRangeExpression<RangeExpression: Swift.RangeExpression>
-    : Swift.RangeExpression
+final class TrackingRangeExpression<RangeExpression: Swift.RangeExpression>:
+    Swift.RangeExpression
     where RangeExpression.Bound == Int
 {
     enum Event: Equatable {

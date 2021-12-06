@@ -1,6 +1,6 @@
 //
 //  FairPriorityQueue.swift
-//  
+//
 //
 //  Created by Sergej Jaskiewicz on 02.12.2019.
 //
@@ -9,7 +9,6 @@
 /// If two elements with the same priority are added, the element that was added
 /// earlier has will have "better" priority (i. e. it will be also extracted earlier).
 struct FairPriorityQueue<Priority: Comparable, Element> {
-
     private var storage: [((Priority, UInt), Element)] = []
     private var next: UInt = 0
 
@@ -20,7 +19,8 @@ struct FairPriorityQueue<Priority: Comparable, Element> {
         next += 1
         var newElementIndex = storage.endIndex - 1
         while let parent = self.parent(of: newElementIndex),
-              storage[parent].0 > storage[newElementIndex].0 {
+              storage[parent].0 > storage[newElementIndex].0
+        {
             storage.swapAt(newElementIndex, parent)
             newElementIndex = parent
         }

@@ -21,6 +21,22 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
+        let subject = CurrentValueSubject<Int, Never>(1)
+        
+        subscription2 = subject.delay(for: 0.1, scheduler: DispatchQueue.global()).sink(receiveCompletion: { completion in
+            print(completion)
+        }, receiveValue: { value in
+            print(value)
+            
+            //return true
+        })
+        
+        subject.send(2)
+        
+        subject.send(3)
+        //subscription?.resume()
+        /*
         subscription = (1 ... 100).publisher.rm.assert(minInterval: .milliseconds(10))
             .flatMap(maxPublishers: .max(1)) { _ in
                 return [1].publisher
@@ -32,7 +48,7 @@ class ViewController: UIViewController {
             
             return false
         }
-        
+        */
         
         
         

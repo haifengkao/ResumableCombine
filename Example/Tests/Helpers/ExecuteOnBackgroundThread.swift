@@ -1,22 +1,22 @@
 //
 //  ExecuteOnBackgroundThread.swift
-//  
+//
 //
 //  Created by Sergej Jaskiewicz on 04.02.2020.
 //
 
 #if canImport(Darwin)
-import Darwin
+    import Darwin
 #elseif canImport(Glibc)
-import Glibc
+    import Glibc
 #else
-#error("How to do threads on this platform?")
+    #error("How to do threads on this platform?")
 #endif
 
 #if canImport(Darwin)
-private typealias ThreadPtr = UnsafeMutablePointer<pthread_t?>
+    private typealias ThreadPtr = UnsafeMutablePointer<pthread_t?>
 #else
-private typealias ThreadPtr = UnsafeMutablePointer<pthread_t>
+    private typealias ThreadPtr = UnsafeMutablePointer<pthread_t>
 #endif
 
 func executeOnBackgroundThread<ResultType>(
@@ -44,11 +44,11 @@ func executeOnBackgroundThread<ResultType>(
                 _backgroundThread,
                 nil,
                 { context in
-#if canImport(Darwin)
-                    let context = context
-#else
-                    let context = context!
-#endif
+                    #if canImport(Darwin)
+                        let context = context
+                    #else
+                        let context = context!
+                    #endif
                     return context
                         .assumingMemoryBound(to: (() -> UnsafeMutableRawPointer).self)
                         .pointee()
@@ -60,13 +60,13 @@ func executeOnBackgroundThread<ResultType>(
                 preconditionFailure("Could not create a background thread")
             }
 
-#if canImport(Darwin)
-            guard let backgroundThread = _backgroundThread.pointee else {
-                preconditionFailure("Could not create a background thread")
-            }
-#else
-            let backgroundThread = _backgroundThread.pointee
-#endif
+            #if canImport(Darwin)
+                guard let backgroundThread = _backgroundThread.pointee else {
+                    preconditionFailure("Could not create a background thread")
+                }
+            #else
+                let backgroundThread = _backgroundThread.pointee
+            #endif
 
             var _resultPtr: UnsafeMutableRawPointer?
             status = pthread_join(backgroundThread, &_resultPtr)

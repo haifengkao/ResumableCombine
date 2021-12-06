@@ -1,12 +1,11 @@
 //
 //  TrackingEncoder.swift
-//  
+//
 //
 //  Created by Sergej Jaskiewicz on 08.11.2019.
 //
 
 final class TrackingEncoder {
-
     enum Event: Equatable {
         // Encoder
         case getCodingPath
@@ -85,25 +84,24 @@ final class TrackingEncoder {
 
     fileprivate var _codingPath: [CodingKey] = []
 
-    fileprivate var _userInfo: [CodingUserInfoKey : Any] = [:]
+    private var _userInfo: [CodingUserInfoKey: Any] = [:]
 
     fileprivate var _unkeyedContainerCount = 0
 }
 
 extension TrackingEncoder: Encoder {
-
     var codingPath: [CodingKey] {
         history.append(.getCodingPath)
         return _codingPath
     }
 
-    var userInfo: [CodingUserInfoKey : Any] {
+    var userInfo: [CodingUserInfoKey: Any] {
         history.append(.getUserInfo)
         return _userInfo
     }
 
     func container<Key: CodingKey>(
-        keyedBy type: Key.Type
+        keyedBy _: Key.Type
     ) -> KeyedEncodingContainer<Key> {
         history.append(.containerKeyedBy)
         return .init(TrackingKeyedEncoder(encoder: self))
@@ -194,7 +192,7 @@ private struct TrackingKeyedEncoder<Key: CodingKey>: KeyedEncodingContainerProto
     }
 
     mutating func nestedContainer<NestedKey: CodingKey>(
-        keyedBy keyType: NestedKey.Type,
+        keyedBy _: NestedKey.Type,
         forKey key: Key
     ) -> KeyedEncodingContainer<NestedKey> {
         encoder.history.append(.keyedContainerNestedKeyedContainer(key.stringValue))
@@ -218,7 +216,6 @@ private struct TrackingKeyedEncoder<Key: CodingKey>: KeyedEncodingContainerProto
 }
 
 private struct TrackingUnkeyedEncoder: UnkeyedEncodingContainer {
-
     let encoder: TrackingEncoder
 
     var codingPath: [CodingKey] {
@@ -313,7 +310,7 @@ private struct TrackingUnkeyedEncoder: UnkeyedEncodingContainer {
     }
 
     func nestedContainer<NestedKey: CodingKey>(
-        keyedBy keyType: NestedKey.Type
+        keyedBy _: NestedKey.Type
     ) -> KeyedEncodingContainer<NestedKey> {
         encoder.history.append(.unkeyedContainerNestedKeyedContainer)
         return .init(TrackingKeyedEncoder(encoder: encoder))
@@ -331,7 +328,6 @@ private struct TrackingUnkeyedEncoder: UnkeyedEncodingContainer {
 }
 
 private struct TrackingSingleValueEncoder: SingleValueEncodingContainer {
-
     let encoder: TrackingEncoder
 
     var codingPath: [CodingKey] {

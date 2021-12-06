@@ -1,6 +1,6 @@
 //
 //  TestingError.swift
-//  
+//
 //
 //  Created by Sergej Jaskiewicz on 11.06.2019.
 //
@@ -58,7 +58,8 @@ func assertThrowsError<Result>(_ expression: @autoclosure () throws -> Result,
                                _ expected: TestingError,
                                _ message: @autoclosure () -> String = "",
                                file: StaticString = #file,
-                               line: UInt = #line) {
+                               line: UInt = #line)
+{
     XCTAssertThrowsError(try expression(), message(), file: file, line: line) { error in
         if let error = error as? TestingError {
             XCTAssertEqual(error, expected)

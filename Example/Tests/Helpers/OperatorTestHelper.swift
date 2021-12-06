@@ -1,6 +1,6 @@
 //
 //  OperatorTestHelper.swift
-//  
+//
 //
 //  Created by Joseph Spadafora on 7/6/19.
 //
@@ -8,9 +8,9 @@
 import XCTest
 
 #if OPENCOMBINE_COMPATIBILITY_TEST
-import Combine
+    import Combine
 #else
-import Combine
+    import Combine
 #endif
 
 /// `OperatorTestHelper` is an abstraction that helps avoid a lot of boilerplate when
@@ -18,9 +18,9 @@ import Combine
 /// `CustomSubscription`, `CustomPublisherBase` and `TrackingSubscriberBase`.
 @available(macOS 10.15, iOS 13.0, *)
 class OperatorTestHelper<SourceValue,
-                         SourceError: Error,
-                         SourcePublisher,
-                         Sut: Publisher>
+    SourceError: Error,
+    SourcePublisher,
+    Sut: Publisher>
     where SourcePublisher: CustomPublisherBase<SourceValue, SourceError>
 {
     typealias Value = Sut.Output
@@ -55,11 +55,11 @@ class OperatorTestHelper<SourceValue,
          customSubscription: CustomSubscription = CustomSubscription(),
          createSut: (SourcePublisher) -> Sut)
     {
-        self.subscription = customSubscription
+        subscription = customSubscription
         let createdPublisher = publisherType.init(subscription: customSubscription)
-        self.publisher = createdPublisher
-        self.sut = createSut(createdPublisher)
-        self.tracking = TrackingSubscriberBase<Value, Failure>(
+        publisher = createdPublisher
+        sut = createSut(createdPublisher)
+        tracking = TrackingSubscriberBase<Value, Failure>(
             receiveSubscription: {
                 initialDemand.map($0.request)
             },
