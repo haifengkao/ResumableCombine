@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ResumableCombine'
-  s.version          = '0.17.0'
+  s.version          = '0.18.0'
   s.summary          = 'Handle backpressure in Swift Combine gracefully'
 
 # This description is used to generate tags and improve search results.
@@ -30,6 +30,7 @@ Swift Combine lacks of support for proper backpressure handling. Many of its ope
   s.swift_version = '5.1'
 
   s.ios.deployment_target = '13.0'
+  s.osx.deployment_target = '10.15'
 
   s.source_files = 'ResumableCombine/Classes/**/*'
 
