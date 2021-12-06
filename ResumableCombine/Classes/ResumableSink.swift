@@ -71,6 +71,16 @@ public extension ResumableCombine where Base: Publisher {
         base.subscribe(sink)
         return sink
     }
+
+    func sink(receiveValue: @escaping (Output) -> Bool
+    ) -> AnyResumable {
+        let sink = Subscribers.ResumableSink<Output, Failure>(
+            receiveCompletion: { _ in },
+            receiveValue: receiveValue
+        )
+        base.subscribe(sink)
+        return sink
+    }
 }
 
 // var buffer = [Int]()
