@@ -33,7 +33,7 @@ Swift Combine lacks of support for proper backpressure handling. Many of its ope
   s.osx.deployment_target = '10.15'
 
   s.source_files = 'ResumableCombine/Classes/**/*'
-
+  s.libraries = "c++"
   # s.resource_bundles = {
   #   'ResumableCombine' => ['ResumableCombine/Assets/*.png']
   # }
