@@ -283,7 +283,8 @@ let subscription = (1 ... 100).publisher
 ```
 ## Pitfalls
 When using with original Combine operators, please test the behavior works as expected. 
-The original Combine may cause incorrect results if the demand is not .unlimitied.
+The original Combine may cause incorrect results if the demand is not .unlimitied,
+
 e.g. `compactMap` will remove all nil values, but it won't send new demands to upstream when the nil value is removed. `rm.sink` request single demand at a time, so it will not receive anything after `compactMap` receives a nil value. `compactMap` should have figured out it's downstream demand isn't fulfilled because the nil value was removed and will never be sent to the downstream. But it is not in the Apple's implementation
 
 ## Requirements
