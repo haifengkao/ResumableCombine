@@ -27,27 +27,25 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "ResumableCombine",
-            dependencies: ["CResumableCombineHelpers"],
-            path: "ResumableCombine/Classes"
+            dependencies: ["CResumableCombineHelpers"]
         ),
         .target(
             name: "CResumableCombineHelpers",
             dependencies: [],
-            path: "ResumableCombine/CResumableCombineHelpers"
+            path: "Sources/CResumableCombineHelpers"
         ),
-        .target(
-            name: "ResumableCombineExample",
-            dependencies: ["ResumableCombine"],
-            path: "Example/ResumableCombine"
-        ),
+        // .target( ResumableCombineExample need ios14 to run
+        //     name: "ResumableCombineExample",
+        //     dependencies: ["ResumableCombine"],
+        //     path: "Example/Shared"
+        // ),
         .testTarget(
             name: "ResumableCombineTests",
             dependencies: [
                 "ResumableCombine",
                 "Quick",
                 "Nimble",
-            ],
-            path: "Example/Tests"
+            ]
         ),
     ],
     cxxLanguageStandard: .cxx11

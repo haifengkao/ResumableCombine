@@ -3,321 +3,321 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F4DB96BA3AAB35A2EC31749 /* Pods_ResumableCombine_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F10A0C248EDE21B9E11AF0C5 /* Pods_ResumableCombine_Example.framework */; };
-		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
-		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
-		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
-		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		65436C145EE859DFF0652353 /* Pods_ResumableCombine_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE541C113BC1F035EA1FB65 /* Pods_ResumableCombine_Tests.framework */; };
-		F9504788250C8EC70061BAAB /* FlatMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9504787250C8EC70061BAAB /* FlatMapTests.swift */; };
-		F950479C250C8F0F0061BAAB /* AssertCrashes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950478A250C8F0F0061BAAB /* AssertCrashes.swift */; };
-		F950479D250C8F0F0061BAAB /* TrackingEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950478B250C8F0F0061BAAB /* TrackingEncoder.swift */; };
-		F950479E250C8F0F0061BAAB /* CustomPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950478C250C8F0F0061BAAB /* CustomPublisher.swift */; };
-		F950479F250C8F0F0061BAAB /* VirtualTimeScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950478D250C8F0F0061BAAB /* VirtualTimeScheduler.swift */; };
-		F95047A0250C8F0F0061BAAB /* XCTUnwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950478E250C8F0F0061BAAB /* XCTUnwrap.swift */; };
-		F95047A1250C8F0F0061BAAB /* TrackingSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950478F250C8F0F0061BAAB /* TrackingSubscriber.swift */; };
-		F95047A2250C8F0F0061BAAB /* TrackingCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9504790250C8F0F0061BAAB /* TrackingCollection.swift */; };
-		F95047A3250C8F0F0061BAAB /* ExecuteOnBackgroundThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9504791250C8F0F0061BAAB /* ExecuteOnBackgroundThread.swift */; };
-		F95047A4250C8F0F0061BAAB /* TestCoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9504792250C8F0F0061BAAB /* TestCoders.swift */; };
-		F95047A5250C8F0F0061BAAB /* TestingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9504793250C8F0F0061BAAB /* TestingError.swift */; };
-		F95047A6250C8F0F0061BAAB /* CustomSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9504794250C8F0F0061BAAB /* CustomSubscription.swift */; };
-		F95047A7250C8F0F0061BAAB /* CleaningUpSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9504795250C8F0F0061BAAB /* CleaningUpSubscriber.swift */; };
-		F95047A8250C8F0F0061BAAB /* OperatorTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9504796250C8F0F0061BAAB /* OperatorTestHelper.swift */; };
-		F95047A9250C8F0F0061BAAB /* CommonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9504797250C8F0F0061BAAB /* CommonTests.swift */; };
-		F95047AA250C8F0F0061BAAB /* TestLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9504798250C8F0F0061BAAB /* TestLifecycle.swift */; };
-		F95047AB250C8F0F0061BAAB /* TestingThreadSafety.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9504799250C8F0F0061BAAB /* TestingThreadSafety.swift */; };
-		F95047AC250C8F0F0061BAAB /* TestReflection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950479A250C8F0F0061BAAB /* TestReflection.swift */; };
-		F95047AD250C8F0F0061BAAB /* FairPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950479B250C8F0F0061BAAB /* FairPriorityQueue.swift */; };
+		32C327FFBB064153619AB77C /* Pods_ResumableCombine__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F6DCE463FCE7B38A57C456 /* Pods_ResumableCombine__iOS_.framework */; };
+		BD15954D2C70510C60F7FD42 /* Pods_ResumableCombine__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51399C15B2697D0FBEA1B07E /* Pods_ResumableCombine__macOS_.framework */; };
+		F95D613A2657D22F00E7D582 /* ResumableCombineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95D61112657D22D00E7D582 /* ResumableCombineApp.swift */; };
+		F95D613B2657D22F00E7D582 /* ResumableCombineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95D61112657D22D00E7D582 /* ResumableCombineApp.swift */; };
+		F95D613C2657D22F00E7D582 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95D61122657D22D00E7D582 /* ContentView.swift */; };
+		F95D613D2657D22F00E7D582 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95D61122657D22D00E7D582 /* ContentView.swift */; };
+		F95D613E2657D22F00E7D582 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F95D61132657D22F00E7D582 /* Assets.xcassets */; };
+		F95D613F2657D22F00E7D582 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F95D61132657D22F00E7D582 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		607FACE61AFB9204008FA782 /* PBXContainerItemProxy */ = {
+		F95D61292657D22F00E7D582 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			containerPortal = F95D610C2657D22D00E7D582 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
-			remoteInfo = ResumableCombine;
+			remoteGlobalIDString = F95D61172657D22F00E7D582;
+			remoteInfo = "ResumableCombine (iOS)";
+		};
+		F95D61342657D22F00E7D582 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F95D610C2657D22D00E7D582 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F95D611F2657D22F00E7D582;
+			remoteInfo = "ResumableCombine (macOS)";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02F4197B79E3943AC8908E2E /* Pods-ResumableCombine_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResumableCombine_Tests.debug.xcconfig"; path = "Target Support Files/Pods-ResumableCombine_Tests/Pods-ResumableCombine_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		3659CF03CA53A6560D8613DA /* Pods-ResumableCombine_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResumableCombine_Example.release.xcconfig"; path = "Target Support Files/Pods-ResumableCombine_Example/Pods-ResumableCombine_Example.release.xcconfig"; sourceTree = "<group>"; };
-		3C8E5A2AD481D45CFA033358 /* Pods-ResumableCombine_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResumableCombine_Tests.release.xcconfig"; path = "Target Support Files/Pods-ResumableCombine_Tests/Pods-ResumableCombine_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		607FACD01AFB9204008FA782 /* ResumableCombine_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResumableCombine_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		607FACE51AFB9204008FA782 /* ResumableCombine_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ResumableCombine_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		6EE541C113BC1F035EA1FB65 /* Pods_ResumableCombine_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResumableCombine_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		883B9E5C0736F7B432421EED /* ResumableCombine.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ResumableCombine.podspec; path = ../ResumableCombine.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		CCD60ADACC8E7D1AABDE7CC5 /* Pods-ResumableCombine_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResumableCombine_Example.debug.xcconfig"; path = "Target Support Files/Pods-ResumableCombine_Example/Pods-ResumableCombine_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		EE6FEB3F0B78B7AC2EF07CE3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		F10A0C248EDE21B9E11AF0C5 /* Pods_ResumableCombine_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResumableCombine_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F9504787250C8EC70061BAAB /* FlatMapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatMapTests.swift; sourceTree = "<group>"; };
-		F950478A250C8F0F0061BAAB /* AssertCrashes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssertCrashes.swift; sourceTree = "<group>"; };
-		F950478B250C8F0F0061BAAB /* TrackingEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingEncoder.swift; sourceTree = "<group>"; };
-		F950478C250C8F0F0061BAAB /* CustomPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPublisher.swift; sourceTree = "<group>"; };
-		F950478D250C8F0F0061BAAB /* VirtualTimeScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTimeScheduler.swift; sourceTree = "<group>"; };
-		F950478E250C8F0F0061BAAB /* XCTUnwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTUnwrap.swift; sourceTree = "<group>"; };
-		F950478F250C8F0F0061BAAB /* TrackingSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingSubscriber.swift; sourceTree = "<group>"; };
-		F9504790250C8F0F0061BAAB /* TrackingCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingCollection.swift; sourceTree = "<group>"; };
-		F9504791250C8F0F0061BAAB /* ExecuteOnBackgroundThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecuteOnBackgroundThread.swift; sourceTree = "<group>"; };
-		F9504792250C8F0F0061BAAB /* TestCoders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCoders.swift; sourceTree = "<group>"; };
-		F9504793250C8F0F0061BAAB /* TestingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingError.swift; sourceTree = "<group>"; };
-		F9504794250C8F0F0061BAAB /* CustomSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSubscription.swift; sourceTree = "<group>"; };
-		F9504795250C8F0F0061BAAB /* CleaningUpSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleaningUpSubscriber.swift; sourceTree = "<group>"; };
-		F9504796250C8F0F0061BAAB /* OperatorTestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorTestHelper.swift; sourceTree = "<group>"; };
-		F9504797250C8F0F0061BAAB /* CommonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTests.swift; sourceTree = "<group>"; };
-		F9504798250C8F0F0061BAAB /* TestLifecycle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLifecycle.swift; sourceTree = "<group>"; };
-		F9504799250C8F0F0061BAAB /* TestingThreadSafety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingThreadSafety.swift; sourceTree = "<group>"; };
-		F950479A250C8F0F0061BAAB /* TestReflection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestReflection.swift; sourceTree = "<group>"; };
-		F950479B250C8F0F0061BAAB /* FairPriorityQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FairPriorityQueue.swift; sourceTree = "<group>"; };
-		FCAD1AB74B26C6CEEF3C5F10 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		07E7C18A3C52FBBB75D56BC1 /* Pods-ResumableCombine (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResumableCombine (macOS).release.xcconfig"; path = "Target Support Files/Pods-ResumableCombine (macOS)/Pods-ResumableCombine (macOS).release.xcconfig"; sourceTree = "<group>"; };
+		51399C15B2697D0FBEA1B07E /* Pods_ResumableCombine__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResumableCombine__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6734D0DDAA1A6036D69182E0 /* ResumableCombine.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = ResumableCombine.podspec; path = ../ResumableCombine.podspec; sourceTree = "<group>"; };
+		79FB6A55250FAD14117713C1 /* Pods-ResumableCombine (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResumableCombine (iOS).release.xcconfig"; path = "Target Support Files/Pods-ResumableCombine (iOS)/Pods-ResumableCombine (iOS).release.xcconfig"; sourceTree = "<group>"; };
+		C23DCCFFF498DE60B37007E4 /* Pods-ResumableCombine (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResumableCombine (iOS).debug.xcconfig"; path = "Target Support Files/Pods-ResumableCombine (iOS)/Pods-ResumableCombine (iOS).debug.xcconfig"; sourceTree = "<group>"; };
+		CA830139A94A1A238BCE732D /* Pods-ResumableCombine (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResumableCombine (macOS).debug.xcconfig"; path = "Target Support Files/Pods-ResumableCombine (macOS)/Pods-ResumableCombine (macOS).debug.xcconfig"; sourceTree = "<group>"; };
+		E2F6DCE463FCE7B38A57C456 /* Pods_ResumableCombine__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResumableCombine__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F95D61112657D22D00E7D582 /* ResumableCombineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumableCombineApp.swift; sourceTree = "<group>"; };
+		F95D61122657D22D00E7D582 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F95D61132657D22F00E7D582 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F95D61182657D22F00E7D582 /* ResumableCombineExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResumableCombineExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F95D611B2657D22F00E7D582 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F95D61202657D22F00E7D582 /* ResumableCombineExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResumableCombineExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F95D61222657D22F00E7D582 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F95D61232657D22F00E7D582 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		F95D61282657D22F00E7D582 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F95D61332657D22F00E7D582 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB9574A7FCFE017C02F08781 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		607FACCD1AFB9204008FA782 /* Frameworks */ = {
+		F95D61152657D22F00E7D582 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F4DB96BA3AAB35A2EC31749 /* Pods_ResumableCombine_Example.framework in Frameworks */,
+				32C327FFBB064153619AB77C /* Pods_ResumableCombine__iOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		607FACE21AFB9204008FA782 /* Frameworks */ = {
+		F95D611D2657D22F00E7D582 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65436C145EE859DFF0652353 /* Pods_ResumableCombine_Tests.framework in Frameworks */,
+				BD15954D2C70510C60F7FD42 /* Pods_ResumableCombine__macOS_.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F95D61252657D22F00E7D582 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F95D61302657D22F00E7D582 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		09FE1F988C22C5275FCA8BAF /* Pods */ = {
+		A0A6C37414409969FA9D6F9A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CCD60ADACC8E7D1AABDE7CC5 /* Pods-ResumableCombine_Example.debug.xcconfig */,
-				3659CF03CA53A6560D8613DA /* Pods-ResumableCombine_Example.release.xcconfig */,
-				02F4197B79E3943AC8908E2E /* Pods-ResumableCombine_Tests.debug.xcconfig */,
-				3C8E5A2AD481D45CFA033358 /* Pods-ResumableCombine_Tests.release.xcconfig */,
+				C23DCCFFF498DE60B37007E4 /* Pods-ResumableCombine (iOS).debug.xcconfig */,
+				79FB6A55250FAD14117713C1 /* Pods-ResumableCombine (iOS).release.xcconfig */,
+				CA830139A94A1A238BCE732D /* Pods-ResumableCombine (macOS).debug.xcconfig */,
+				07E7C18A3C52FBBB75D56BC1 /* Pods-ResumableCombine (macOS).release.xcconfig */,
 			);
+			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		607FACC71AFB9204008FA782 = {
+		EF917E95502C244511362F04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				607FACF51AFB993E008FA782 /* Podspec Metadata */,
-				607FACD21AFB9204008FA782 /* Example for ResumableCombine */,
-				607FACE81AFB9204008FA782 /* Tests */,
-				607FACD11AFB9204008FA782 /* Products */,
-				09FE1F988C22C5275FCA8BAF /* Pods */,
-				BF9168E65060C2B600750D78 /* Frameworks */,
-			);
-			sourceTree = "<group>";
-		};
-		607FACD11AFB9204008FA782 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				607FACD01AFB9204008FA782 /* ResumableCombine_Example.app */,
-				607FACE51AFB9204008FA782 /* ResumableCombine_Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		607FACD21AFB9204008FA782 /* Example for ResumableCombine */ = {
-			isa = PBXGroup;
-			children = (
-				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				607FACDC1AFB9204008FA782 /* Images.xcassets */,
-				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
-				607FACD31AFB9204008FA782 /* Supporting Files */,
-			);
-			name = "Example for ResumableCombine";
-			path = ResumableCombine;
-			sourceTree = "<group>";
-		};
-		607FACD31AFB9204008FA782 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				607FACD41AFB9204008FA782 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		607FACE81AFB9204008FA782 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				F9504789250C8F0F0061BAAB /* Helpers */,
-				F9504787250C8EC70061BAAB /* FlatMapTests.swift */,
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
-				607FACE91AFB9204008FA782 /* Supporting Files */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		607FACE91AFB9204008FA782 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				607FACEA1AFB9204008FA782 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
-			isa = PBXGroup;
-			children = (
-				883B9E5C0736F7B432421EED /* ResumableCombine.podspec */,
-				EE6FEB3F0B78B7AC2EF07CE3 /* README.md */,
-				FCAD1AB74B26C6CEEF3C5F10 /* LICENSE */,
-			);
-			name = "Podspec Metadata";
-			sourceTree = "<group>";
-		};
-		BF9168E65060C2B600750D78 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F10A0C248EDE21B9E11AF0C5 /* Pods_ResumableCombine_Example.framework */,
-				6EE541C113BC1F035EA1FB65 /* Pods_ResumableCombine_Tests.framework */,
+				E2F6DCE463FCE7B38A57C456 /* Pods_ResumableCombine__iOS_.framework */,
+				51399C15B2697D0FBEA1B07E /* Pods_ResumableCombine__macOS_.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F9504789250C8F0F0061BAAB /* Helpers */ = {
+		F95D610B2657D22D00E7D582 = {
 			isa = PBXGroup;
 			children = (
-				F950478A250C8F0F0061BAAB /* AssertCrashes.swift */,
-				F950478B250C8F0F0061BAAB /* TrackingEncoder.swift */,
-				F950478C250C8F0F0061BAAB /* CustomPublisher.swift */,
-				F950478D250C8F0F0061BAAB /* VirtualTimeScheduler.swift */,
-				F950478E250C8F0F0061BAAB /* XCTUnwrap.swift */,
-				F950478F250C8F0F0061BAAB /* TrackingSubscriber.swift */,
-				F9504790250C8F0F0061BAAB /* TrackingCollection.swift */,
-				F9504791250C8F0F0061BAAB /* ExecuteOnBackgroundThread.swift */,
-				F9504792250C8F0F0061BAAB /* TestCoders.swift */,
-				F9504793250C8F0F0061BAAB /* TestingError.swift */,
-				F9504794250C8F0F0061BAAB /* CustomSubscription.swift */,
-				F9504795250C8F0F0061BAAB /* CleaningUpSubscriber.swift */,
-				F9504796250C8F0F0061BAAB /* OperatorTestHelper.swift */,
-				F9504797250C8F0F0061BAAB /* CommonTests.swift */,
-				F9504798250C8F0F0061BAAB /* TestLifecycle.swift */,
-				F9504799250C8F0F0061BAAB /* TestingThreadSafety.swift */,
-				F950479A250C8F0F0061BAAB /* TestReflection.swift */,
-				F950479B250C8F0F0061BAAB /* FairPriorityQueue.swift */,
+				F95D615A26581C5800E7D582 /* Podspec Metadata */,
+				F95D61102657D22D00E7D582 /* Shared */,
+				F95D611A2657D22F00E7D582 /* iOS */,
+				F95D61212657D22F00E7D582 /* macOS */,
+				F95D61192657D22F00E7D582 /* Products */,
+				A0A6C37414409969FA9D6F9A /* Pods */,
+				EF917E95502C244511362F04 /* Frameworks */,
 			);
-			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F95D61102657D22D00E7D582 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				F95D61112657D22D00E7D582 /* ResumableCombineApp.swift */,
+				F95D61122657D22D00E7D582 /* ContentView.swift */,
+				F95D61132657D22F00E7D582 /* Assets.xcassets */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		F95D61192657D22F00E7D582 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F95D61182657D22F00E7D582 /* ResumableCombineExample.app */,
+				F95D61202657D22F00E7D582 /* ResumableCombineExample.app */,
+				F95D61282657D22F00E7D582 /* Tests iOS.xctest */,
+				F95D61332657D22F00E7D582 /* Tests macOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F95D611A2657D22F00E7D582 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				F95D611B2657D22F00E7D582 /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		F95D61212657D22F00E7D582 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				F95D61222657D22F00E7D582 /* Info.plist */,
+				F95D61232657D22F00E7D582 /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		F95D615A26581C5800E7D582 /* Podspec Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				6734D0DDAA1A6036D69182E0 /* ResumableCombine.podspec */,
+				FB9574A7FCFE017C02F08781 /* README.md */,
+			);
+			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		607FACCF1AFB9204008FA782 /* ResumableCombine_Example */ = {
+		F95D61172657D22F00E7D582 /* ResumableCombine (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "ResumableCombine_Example" */;
+			buildConfigurationList = F95D61422657D22F00E7D582 /* Build configuration list for PBXNativeTarget "ResumableCombine (iOS)" */;
 			buildPhases = (
-				7F826701C564121DDBA4180B /* [CP] Check Pods Manifest.lock */,
-				607FACCC1AFB9204008FA782 /* Sources */,
-				607FACCD1AFB9204008FA782 /* Frameworks */,
-				607FACCE1AFB9204008FA782 /* Resources */,
-				BC08CD50DC252730CCC0A826 /* [CP] Embed Pods Frameworks */,
+				157C92B264955AB5653C1775 /* [CP] Check Pods Manifest.lock */,
+				F95D61142657D22F00E7D582 /* Sources */,
+				F95D61152657D22F00E7D582 /* Frameworks */,
+				F95D61162657D22F00E7D582 /* Resources */,
+				1E3F4AFC993A0A476E271D19 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ResumableCombine_Example;
-			productName = ResumableCombine;
-			productReference = 607FACD01AFB9204008FA782 /* ResumableCombine_Example.app */;
+			name = "ResumableCombine (iOS)";
+			productName = "ResumableCombine (iOS)";
+			productReference = F95D61182657D22F00E7D582 /* ResumableCombineExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		607FACE41AFB9204008FA782 /* ResumableCombine_Tests */ = {
+		F95D611F2657D22F00E7D582 /* ResumableCombine (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "ResumableCombine_Tests" */;
+			buildConfigurationList = F95D61452657D22F00E7D582 /* Build configuration list for PBXNativeTarget "ResumableCombine (macOS)" */;
 			buildPhases = (
-				3F2557704831766C89784211 /* [CP] Check Pods Manifest.lock */,
-				607FACE11AFB9204008FA782 /* Sources */,
-				607FACE21AFB9204008FA782 /* Frameworks */,
-				607FACE31AFB9204008FA782 /* Resources */,
-				07E35938095D8270DB83F573 /* [CP] Embed Pods Frameworks */,
+				448C44ACE618877319E1AD25 /* [CP] Check Pods Manifest.lock */,
+				F95D611C2657D22F00E7D582 /* Sources */,
+				F95D611D2657D22F00E7D582 /* Frameworks */,
+				F95D611E2657D22F00E7D582 /* Resources */,
+				5E58C9EA8D9AF96F82D73797 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				607FACE71AFB9204008FA782 /* PBXTargetDependency */,
 			);
-			name = ResumableCombine_Tests;
-			productName = Tests;
-			productReference = 607FACE51AFB9204008FA782 /* ResumableCombine_Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			name = "ResumableCombine (macOS)";
+			productName = "ResumableCombine (macOS)";
+			productReference = F95D61202657D22F00E7D582 /* ResumableCombineExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F95D61272657D22F00E7D582 /* Tests iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F95D61482657D22F00E7D582 /* Build configuration list for PBXNativeTarget "Tests iOS" */;
+			buildPhases = (
+				F95D61242657D22F00E7D582 /* Sources */,
+				F95D61252657D22F00E7D582 /* Frameworks */,
+				F95D61262657D22F00E7D582 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F95D612A2657D22F00E7D582 /* PBXTargetDependency */,
+			);
+			name = "Tests iOS";
+			productName = "Tests iOS";
+			productReference = F95D61282657D22F00E7D582 /* Tests iOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		F95D61322657D22F00E7D582 /* Tests macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F95D614B2657D22F00E7D582 /* Build configuration list for PBXNativeTarget "Tests macOS" */;
+			buildPhases = (
+				F95D612F2657D22F00E7D582 /* Sources */,
+				F95D61302657D22F00E7D582 /* Frameworks */,
+				F95D61312657D22F00E7D582 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F95D61352657D22F00E7D582 /* PBXTargetDependency */,
+			);
+			name = "Tests macOS";
+			productName = "Tests macOS";
+			productReference = F95D61332657D22F00E7D582 /* Tests macOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		607FACC81AFB9204008FA782 /* Project object */ = {
+		F95D610C2657D22D00E7D582 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1200;
-				ORGANIZATIONNAME = CocoaPods;
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
 				TargetAttributes = {
-					607FACCF1AFB9204008FA782 = {
-						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
+					F95D61172657D22F00E7D582 = {
+						CreatedOnToolsVersion = 12.3;
 					};
-					607FACE41AFB9204008FA782 = {
-						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
-						TestTargetID = 607FACCF1AFB9204008FA782;
+					F95D611F2657D22F00E7D582 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					F95D61272657D22F00E7D582 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = F95D61172657D22F00E7D582;
+					};
+					F95D61322657D22F00E7D582 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = F95D611F2657D22F00E7D582;
 					};
 				};
 			};
-			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "ResumableCombine" */;
-			compatibilityVersion = "Xcode 3.2";
+			buildConfigurationList = F95D610F2657D22D00E7D582 /* Build configuration list for PBXProject "ResumableCombine" */;
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 607FACC71AFB9204008FA782;
-			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
+			mainGroup = F95D610B2657D22D00E7D582;
+			productRefGroup = F95D61192657D22F00E7D582 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				607FACCF1AFB9204008FA782 /* ResumableCombine_Example */,
-				607FACE41AFB9204008FA782 /* ResumableCombine_Tests */,
+				F95D61172657D22F00E7D582 /* ResumableCombine (iOS) */,
+				F95D611F2657D22F00E7D582 /* ResumableCombine (macOS) */,
+				F95D61272657D22F00E7D582 /* Tests iOS */,
+				F95D61322657D22F00E7D582 /* Tests macOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		607FACCE1AFB9204008FA782 /* Resources */ = {
+		F95D61162657D22F00E7D582 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
-				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				F95D613E2657D22F00E7D582 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		607FACE31AFB9204008FA782 /* Resources */ = {
+		F95D611E2657D22F00E7D582 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F95D613F2657D22F00E7D582 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F95D61262657D22F00E7D582 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F95D61312657D22F00E7D582 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -327,27 +327,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07E35938095D8270DB83F573 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ResumableCombine_Tests/Pods-ResumableCombine_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ResumableCombine_Tests/Pods-ResumableCombine_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3F2557704831766C89784211 /* [CP] Check Pods Manifest.lock */ = {
+		157C92B264955AB5653C1775 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -362,14 +342,31 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ResumableCombine_Tests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ResumableCombine (iOS)-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7F826701C564121DDBA4180B /* [CP] Check Pods Manifest.lock */ = {
+		1E3F4AFC993A0A476E271D19 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ResumableCombine (iOS)/Pods-ResumableCombine (iOS)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ResumableCombine (iOS)/Pods-ResumableCombine (iOS)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ResumableCombine (iOS)/Pods-ResumableCombine (iOS)-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		448C44ACE618877319E1AD25 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -384,115 +381,99 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ResumableCombine_Example-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ResumableCombine (macOS)-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BC08CD50DC252730CCC0A826 /* [CP] Embed Pods Frameworks */ = {
+		5E58C9EA8D9AF96F82D73797 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ResumableCombine_Example/Pods-ResumableCombine_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ResumableCombine/ResumableCombine.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ResumableCombine (macOS)/Pods-ResumableCombine (macOS)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ResumableCombine.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ResumableCombine (macOS)/Pods-ResumableCombine (macOS)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ResumableCombine_Example/Pods-ResumableCombine_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ResumableCombine (macOS)/Pods-ResumableCombine (macOS)-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		607FACCC1AFB9204008FA782 /* Sources */ = {
+		F95D61142657D22F00E7D582 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				F95D613C2657D22F00E7D582 /* ContentView.swift in Sources */,
+				F95D613A2657D22F00E7D582 /* ResumableCombineApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		607FACE11AFB9204008FA782 /* Sources */ = {
+		F95D611C2657D22F00E7D582 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F950479C250C8F0F0061BAAB /* AssertCrashes.swift in Sources */,
-				F95047A2250C8F0F0061BAAB /* TrackingCollection.swift in Sources */,
-				F95047A0250C8F0F0061BAAB /* XCTUnwrap.swift in Sources */,
-				F95047AD250C8F0F0061BAAB /* FairPriorityQueue.swift in Sources */,
-				F95047A1250C8F0F0061BAAB /* TrackingSubscriber.swift in Sources */,
-				F95047AC250C8F0F0061BAAB /* TestReflection.swift in Sources */,
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
-				F950479E250C8F0F0061BAAB /* CustomPublisher.swift in Sources */,
-				F9504788250C8EC70061BAAB /* FlatMapTests.swift in Sources */,
-				F950479F250C8F0F0061BAAB /* VirtualTimeScheduler.swift in Sources */,
-				F95047AB250C8F0F0061BAAB /* TestingThreadSafety.swift in Sources */,
-				F95047AA250C8F0F0061BAAB /* TestLifecycle.swift in Sources */,
-				F95047A9250C8F0F0061BAAB /* CommonTests.swift in Sources */,
-				F95047A3250C8F0F0061BAAB /* ExecuteOnBackgroundThread.swift in Sources */,
-				F95047A5250C8F0F0061BAAB /* TestingError.swift in Sources */,
-				F950479D250C8F0F0061BAAB /* TrackingEncoder.swift in Sources */,
-				F95047A8250C8F0F0061BAAB /* OperatorTestHelper.swift in Sources */,
-				F95047A7250C8F0F0061BAAB /* CleaningUpSubscriber.swift in Sources */,
-				F95047A4250C8F0F0061BAAB /* TestCoders.swift in Sources */,
-				F95047A6250C8F0F0061BAAB /* CustomSubscription.swift in Sources */,
+				F95D613D2657D22F00E7D582 /* ContentView.swift in Sources */,
+				F95D613B2657D22F00E7D582 /* ResumableCombineApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F95D61242657D22F00E7D582 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F95D612F2657D22F00E7D582 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		607FACE71AFB9204008FA782 /* PBXTargetDependency */ = {
+		F95D612A2657D22F00E7D582 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 607FACCF1AFB9204008FA782 /* ResumableCombine_Example */;
-			targetProxy = 607FACE61AFB9204008FA782 /* PBXContainerItemProxy */;
+			target = F95D61172657D22F00E7D582 /* ResumableCombine (iOS) */;
+			targetProxy = F95D61292657D22F00E7D582 /* PBXContainerItemProxy */;
+		};
+		F95D61352657D22F00E7D582 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F95D611F2657D22F00E7D582 /* ResumableCombine (macOS) */;
+			targetProxy = F95D61342657D22F00E7D582 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		607FACD91AFB9204008FA782 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				607FACDA1AFB9204008FA782 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				607FACDF1AFB9204008FA782 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		607FACED1AFB9204008FA782 /* Debug */ = {
+		F95D61402657D22F00E7D582 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -505,14 +486,14 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -520,36 +501,38 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		607FACEE1AFB9204008FA782 /* Release */ = {
+		F95D61412657D22F00E7D582 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -562,14 +545,14 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -577,115 +560,234 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		F95D61432657D22F00E7D582 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C23DCCFFF498DE60B37007E4 /* Pods-ResumableCombine (iOS).debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.ResumableCombine-Example";
+				PRODUCT_NAME = ResumableCombineExample;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F95D61442657D22F00E7D582 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79FB6A55250FAD14117713C1 /* Pods-ResumableCombine (iOS).release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.ResumableCombine-Example";
+				PRODUCT_NAME = ResumableCombineExample;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		607FACF01AFB9204008FA782 /* Debug */ = {
+		F95D61462657D22F00E7D582 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CCD60ADACC8E7D1AABDE7CC5 /* Pods-ResumableCombine_Example.debug.xcconfig */;
+			baseConfigurationReference = CA830139A94A1A238BCE732D /* Pods-ResumableCombine (macOS).debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ResumableCombine/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.ResumableCombine-Example";
+				PRODUCT_NAME = ResumableCombineExample;
+				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		607FACF11AFB9204008FA782 /* Release */ = {
+		F95D61472657D22F00E7D582 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3659CF03CA53A6560D8613DA /* Pods-ResumableCombine_Example.release.xcconfig */;
+			baseConfigurationReference = 07E7C18A3C52FBBB75D56BC1 /* Pods-ResumableCombine (macOS).release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ResumableCombine/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.ResumableCombine-Example";
+				PRODUCT_NAME = ResumableCombineExample;
+				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
-		607FACF31AFB9204008FA782 /* Debug */ = {
+		F95D61492657D22F00E7D582 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02F4197B79E3943AC8908E2E /* Pods-ResumableCombine_Tests.debug.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Tests iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.ResumableCombine-Example.Tests-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ResumableCombine_Example.app/ResumableCombine_Example";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ResumableCombine (iOS)";
 			};
 			name = Debug;
 		};
-		607FACF41AFB9204008FA782 /* Release */ = {
+		F95D614A2657D22F00E7D582 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C8E5A2AD481D45CFA033358 /* Pods-ResumableCombine_Tests.release.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Tests iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
-				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.ResumableCombine-Example.Tests-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ResumableCombine_Example.app/ResumableCombine_Example";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ResumableCombine (iOS)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F95D614C2657D22F00E7D582 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Tests macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.ResumableCombine-Example.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "ResumableCombine (macOS)";
+			};
+			name = Debug;
+		};
+		F95D614D2657D22F00E7D582 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Tests macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.ResumableCombine-Example.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "ResumableCombine (macOS)";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "ResumableCombine" */ = {
+		F95D610F2657D22D00E7D582 /* Build configuration list for PBXProject "ResumableCombine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				607FACED1AFB9204008FA782 /* Debug */,
-				607FACEE1AFB9204008FA782 /* Release */,
+				F95D61402657D22F00E7D582 /* Debug */,
+				F95D61412657D22F00E7D582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "ResumableCombine_Example" */ = {
+		F95D61422657D22F00E7D582 /* Build configuration list for PBXNativeTarget "ResumableCombine (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				607FACF01AFB9204008FA782 /* Debug */,
-				607FACF11AFB9204008FA782 /* Release */,
+				F95D61432657D22F00E7D582 /* Debug */,
+				F95D61442657D22F00E7D582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "ResumableCombine_Tests" */ = {
+		F95D61452657D22F00E7D582 /* Build configuration list for PBXNativeTarget "ResumableCombine (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				607FACF31AFB9204008FA782 /* Debug */,
-				607FACF41AFB9204008FA782 /* Release */,
+				F95D61462657D22F00E7D582 /* Debug */,
+				F95D61472657D22F00E7D582 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F95D61482657D22F00E7D582 /* Build configuration list for PBXNativeTarget "Tests iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F95D61492657D22F00E7D582 /* Debug */,
+				F95D614A2657D22F00E7D582 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F95D614B2657D22F00E7D582 /* Build configuration list for PBXNativeTarget "Tests macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F95D614C2657D22F00E7D582 /* Debug */,
+				F95D614D2657D22F00E7D582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
+	rootObject = F95D610C2657D22D00E7D582 /* Project object */;
 }

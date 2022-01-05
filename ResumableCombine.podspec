@@ -21,20 +21,27 @@ Pod::Spec.new do |s|
 Swift Combine lacks of support for proper backpressure handling. Many of its operators just send request(.unlimited) for the first demand request. It renders the Combine's pull mechanism utterly uselesss. This project aims to fix this problem.on of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/Hai Feng Kao/ResumableCombine'
+  s.homepage         = 'https://github.com/haifengkao/ResumableCombine'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Hai Feng Kao' => 'haifeng@cocoaspice.in' }
-  s.source           = { :git => 'https://github.com/HaiFengKao/ResumableCombine.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/haifengkao/ResumableCombine.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-  s.swift_version = '5.1'
 
   s.ios.deployment_target = '13.0'
   s.osx.deployment_target = '10.15'
 
-  s.source_files = 'ResumableCombine/Classes/**/*'
-  s.libraries = "c++"
-  # s.resource_bundles = {
+  s.swift_version = '5'
+
+  s.source_files = 'Sources/**/*'
+
+  s.test_spec 'Tests' do |test_spec|
+    test_spec.source_files = 'Tests/ResumableCombineTests/**/*.{swift}'
+    test_spec.dependency 'Quick' # This dependency will only be linked with your tests.
+    test_spec.dependency 'Nimble' # This dependency will only be linked with your tests.
+  end
+
+# s.resource_bundles = {
   #   'ResumableCombine' => ['ResumableCombine/Assets/*.png']
   # }
 

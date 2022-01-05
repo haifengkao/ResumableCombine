@@ -1,0 +1,6 @@
+framework module ResumableCombine {
+  umbrella header "ResumableCombine-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module ResumableCombine {
+  umbrella header "ResumableCombine-macOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

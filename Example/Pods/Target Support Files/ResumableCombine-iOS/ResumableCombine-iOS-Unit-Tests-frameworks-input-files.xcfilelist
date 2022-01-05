@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/ResumableCombine-iOS/ResumableCombine-iOS-Unit-Tests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ResumableCombine-iOS/ResumableCombine.framework
+${BUILT_PRODUCTS_DIR}/Quick-iOS/Quick.framework
+${BUILT_PRODUCTS_DIR}/Nimble-iOS/Nimble.framework

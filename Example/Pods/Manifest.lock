@@ -2,26 +2,26 @@ PODS:
   - Nimble (9.2.1)
   - Quick (4.0.0)
   - ResumableCombine (0.20.0)
+  - ResumableCombine/Tests (0.20.0):
+    - Nimble
+    - Quick
 
 DEPENDENCIES:
-  - Nimble (~> 9.0)
-  - Quick (~> 4.0)
   - ResumableCombine (from `../`)
+  - ResumableCombine/Tests (from `../`)
 
 EXTERNAL SOURCES:
   ResumableCombine:
     :path: "../"
 
-CHECKOUT OPTIONS: 
-
 SPEC CHECKSUMS:
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
   Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
-  ResumableCombine: c56a9a07a7889a3d849f3187b389b70ce4fc79e1
+  ResumableCombine: 06f1fe23f81601f74b26e8f383ecf29b83a79a04
 
 COCOAPODS: 1.11.2
 
-PODFILE CHECKSUM: 699fe0ea4e0c077becc9f231da54252195a2e680
+PODFILE CHECKSUM: 2945ec98c9fe624f9ae96f67dec34dcffe0e4ae9
 
 SPEC REPOS:
   trunk:
