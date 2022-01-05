@@ -17,7 +17,7 @@ class TableOfContentsSpec: QuickSpec {
                     }, receiveValue: { value in
 
                         values.append(value)
-                        
+
                     })
 
                     subject.send(2)
@@ -26,7 +26,7 @@ class TableOfContentsSpec: QuickSpec {
                     expect(values).toEventually(equal([1, 2, 3]))
                 }
             }
-            
+
             context("with resumable sink") {
                 it("will receive newest value only") {
                     let subject = CurrentValueSubject<Int, Never>(1)

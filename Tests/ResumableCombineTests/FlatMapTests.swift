@@ -842,7 +842,6 @@ final class FlatMapTests: XCTestCase {
     }
 
     func testRecursiveRequest() throws {
-        
         return // Failed test
         let helper = OperatorTestHelper(
             publisherType: CustomPublisherBase<CustomPublisher, TestingError>.self,
